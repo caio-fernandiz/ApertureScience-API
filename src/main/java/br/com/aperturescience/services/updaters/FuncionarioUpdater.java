@@ -8,8 +8,24 @@ import br.com.aperturescience.models.Funcionario;
 @Component
 public class FuncionarioUpdater {
 
-    public void atualizarFuncionario(Funcionario funcionario, FuncionarioFormUpdateDTO form){
-        if (form.nome() != null) funcionario.setNome(form.nome());
-        if (form.cargo() !=null) funcionario.setCargo(form.cargo());
+    public void atualizarFuncionario(Funcionario funcionario, FuncionarioFormUpdateDTO form) {
+        if (form.nome() != null)
+            funcionario.setNome(form.nome());
+        if (form.idade() != null)
+            funcionario.setIdade(form.idade());
+        if (form.cpf() != null)
+            funcionario.setCpf(form.cpf());
+        if (form.email() != null)
+            funcionario.setEmail(form.email());
+        if (form.telefone() != null)
+            funcionario.setTelefone(form.telefone());
+        if (form.cargo() != null)
+            funcionario.setCargo(form.cargo());
+        if (form.nivelAcesso() != null)
+            funcionario.setNivelAcesso(form.nivelAcesso());
+        if (form.senha() != null)
+            funcionario.setSenha(form.senha());
+        if (form.codigoLogin() != null)
+            funcionario.setCodigoLogin(form.codigoLogin());
     }
 }
