@@ -18,5 +18,13 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
+    private Integer idade;
+    private String cpf;
+    private String email;
+    private String telefone;
     private String cargo;
+    private Integer nivelAcesso;
+    private String senha;
+    private String codigoLogin;
+    
 }
