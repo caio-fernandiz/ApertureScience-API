@@ -13,6 +13,8 @@
     src: url('fonts/UniversLTStd-LightCn.otf') format('opentype');
 }
 
+/*PÁGINA LOGIN*/
+
 h1 {
     font-family: 'Aperture';
     font-style: italic;
@@ -65,8 +67,36 @@ input {
     font-family: 'AP2';
 }
 
-button {
+.botaoLogar{
     width: 150px;
     height: 25px;
+    font-family: 'AP2';
+    letter-spacing: 2px;
 }
+
+/*PÁGINA MENU*/
+
+.headerMenu {
+    border-bottom: 5px solid #000;
+    padding-bottom: 30px; 
+}
+
+.apertureLaboratoriesLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.opcoes{
+    margin-top: 150px;
+    margin-left: 70px;
+    gap: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+
+
+
 
