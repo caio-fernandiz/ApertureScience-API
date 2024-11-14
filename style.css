@@ -65,6 +65,7 @@ input {
     border-radius: 8px;
     padding: 0 15px;
     font-family: 'AP2';
+    letter-spacing: 1px;
 }
 
 .botaoLogar{
@@ -77,8 +78,13 @@ input {
 /*PÁGINA MENU*/
 
 .headerMenu {
-    border-bottom: 5px solid #000;
-    padding-bottom: 30px; 
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background: 
+        linear-gradient(to right, transparent 370px, #000 0%) bottom;
+    background-size: 100% 5px; 
+    background-position: 0px 173px ;
+    background-repeat: no-repeat;
 }
 
 .apertureLaboratoriesLogo {
@@ -87,16 +93,61 @@ input {
     margin-right: auto;
 }
 
-.opcoes{
-    margin-top: 150px;
+.opcoes {
+
     margin-left: 70px;
+    width: 300px;
     gap: 100px;
+    height: 81vh;
     display: flex;
     flex-direction: column;
-    justify-content: right;
-}
+    align-items: center;
+    font-size: large;
+    font-family: 'AP2';
+    letter-spacing: 2px;
+    border-right: 5px solid black;
+  }
+  
+  .levaParaFuncionarios, .levaParaCobaias, .levaParaTestes {
+    cursor: pointer;
+    font-size: 30px;
+    position: relative; 
+  }
 
+  .levaParaFuncionarios{
+    padding: 30px 24px;
+    margin-top: 100px;
+  }
 
+  .levaParaCobaias {
+    padding: 30px 24px;
 
+  }
+
+  .levaParaTestes {
+    padding: 30px 24px;
+ 
+  }
+
+    .levaParaFuncionarios::before,
+    .levaParaCobaias::before,
+    .levaParaTestes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px; 
+    height: 100%;
+    background-color: rgba(194, 192, 192, 0.623);
+    z-index: -1; 
+    border-radius: 10px;
+  }
+  
+    .levaParaFuncionarios:hover,
+    .levaParaCobaias:hover,
+    .levaParaTestes:hover {
+    transform: scale(1.20);
+  }
 
 
