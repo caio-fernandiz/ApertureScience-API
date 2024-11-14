@@ -83,7 +83,7 @@ input {
     background: 
         linear-gradient(to right, transparent 370px, #000 0%) bottom;
     background-size: 100% 5px; 
-    background-position: 0px 173px ;
+    background-position: 0px 173px;
     background-repeat: no-repeat;
 }
 
@@ -93,8 +93,11 @@ input {
     margin-right: auto;
 }
 
-.opcoes {
+.container {
+    display: flex;
+}
 
+.opcoes {
     margin-left: 70px;
     width: 300px;
     gap: 100px;
@@ -106,48 +109,156 @@ input {
     font-family: 'AP2';
     letter-spacing: 2px;
     border-right: 5px solid black;
-  }
-  
-  .levaParaFuncionarios, .levaParaCobaias, .levaParaTestes {
+}
+
+.levaParaFuncionarios, .levaParaCobaias, .levaParaTestes {
     cursor: pointer;
     font-size: 30px;
-    position: relative; 
-  }
+    position: relative;
+    transition: transform 0.3s ease;
+}
 
-  .levaParaFuncionarios{
+.levaParaFuncionarios {
     padding: 30px 24px;
     margin-top: 100px;
-  }
+}
 
-  .levaParaCobaias {
+.levaParaCobaias {
     padding: 30px 24px;
+}
 
-  }
-
-  .levaParaTestes {
+.levaParaTestes {
     padding: 30px 24px;
- 
-  }
+}
 
-    .levaParaFuncionarios::before,
-    .levaParaCobaias::before,
-    .levaParaTestes::before {
+.levaParaFuncionarios::before,
+.levaParaCobaias::before,
+.levaParaTestes::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px; 
+    width: 200px;
     height: 100%;
     background-color: rgba(194, 192, 192, 0.623);
-    z-index: -1; 
+    z-index: -1;
     border-radius: 10px;
-  }
-  
-    .levaParaFuncionarios:hover,
-    .levaParaCobaias:hover,
-    .levaParaTestes:hover {
+    transition: background-color 0.3s ease;
+}
+
+.levaParaFuncionarios:hover,
+.levaParaCobaias:hover,
+.levaParaTestes:hover {
     transform: scale(1.20);
-  }
+}
 
 
+.slider-container {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+.opcoes h2.active::before {
+    background-color: rgba(194, 192, 192, 0.9);
+}
+
+.funcionarios-container {
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+    height: 100%;
+}
+
+.lista-funcionarios {
+    width: 300px;
+}
+
+.funcionario-select {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-funcionario {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.botoes-principais, .botoes-confirmacao {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-editar, .btn-deletar, .btn-cancelar, .btn-confirmar {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-editar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-deletar {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-cancelar {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+.btn-confirmar {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn-editar:hover, .btn-deletar:hover, .btn-cancelar:hover, .btn-confirmar:hover {
+    opacity: 0.9;
+}
