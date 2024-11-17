@@ -1,6 +1,7 @@
 package br.com.aperturescience.models;
 
 import br.com.aperturescience.util.GeradorDeLogin;
+import br.com.aperturescience.util.GeradorDeSenha;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,5 +33,6 @@ public class Funcionario {
     @PrePersist
     protected void onCreate(){
         this.codigoLogin = GeradorDeLogin.gerarCodigoAleatorio();
+        this.senha = GeradorDeSenha.gerarSenha();
     }
 }

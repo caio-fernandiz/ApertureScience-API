@@ -151,7 +151,6 @@ document.querySelector('.btn-confirmar').addEventListener('click', function() {
         // Limpar o formulário
         clearForm();
 
-       
     } else if (currentAction === 'create' || currentAction === 'edit') {
         if (!validateForm()) {
             alert('Por favor, preencha todos os campos');
@@ -159,9 +158,8 @@ document.querySelector('.btn-confirmar').addEventListener('click', function() {
         }
 
         if (currentAction === 'create') {
-            const newId = funcionarios.length > 0 ? Math.max(...funcionarios.map(f => f.id)) + 1 : 1;
+            // Criar novo funcionário
             const newFuncionario = {
-                id: newId,
                 nome: document.getElementById('nome').value,
                 idade: parseInt(document.getElementById('idade').value),
                 cpf: document.getElementById('cpf').value,
@@ -170,7 +168,33 @@ document.querySelector('.btn-confirmar').addEventListener('click', function() {
                 cargo: document.getElementById('cargo').value,
                 acesso: document.getElementById('acesso').value,
             };
-            funcionarios.push(newFuncionario);
+
+            // Enviar funcionário ao servidor
+            fetch('http://localhost:8080/as/funcionarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newFuncionario),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Erro ao cadastrar funcionário');
+                })
+                .then(data => {
+                    // Adicionar funcionário à lista local
+                    funcionarios.push({ id: data.id, ...newFuncionario });
+
+                    // Atualizar a lista e limpar o formulário
+                    updateFuncionariosList();
+                    clearForm();
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Ocorreu um erro ao cadastrar o funcionário.');
+                });
         } else if (currentAction === 'edit') {
             const indexEdit = funcionarios.findIndex(f => f.id === selectedFuncionario.id);
             if (indexEdit !== -1) {
@@ -200,6 +224,7 @@ document.querySelector('.btn-confirmar').addEventListener('click', function() {
     document.querySelector('.botoes-confirmacao').style.display = 'none';
     currentAction = null;
 });
+
 
 // Inicializar a lista de funcionários
 updateFuncionariosList();
