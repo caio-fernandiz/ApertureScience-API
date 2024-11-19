@@ -16,10 +16,10 @@ function showSlide(index) {
 showSlide(0);
 
 // Array para armazenar os funcionários
-let funcionarios = [];
 
 let currentAction = null;
-let selectedFuncionario = null;
+
+let selectedFuncionarioId = null; // Variável global para armazenar o ID do funcionário selecionado
 
 // Função para carregar funcionários do banco de dados
 function loadFuncionariosFromDatabase() {
@@ -61,7 +61,9 @@ function updateFuncionariosList() {
 function selectFuncionario(id) {
     const funcionario = funcionarios.find(f => f.id == id);
     if (funcionario) {
-        selectedFuncionario = funcionario;
+
+        selectedFuncionarioId = funcionario.id; // Atualiza o ID do funcionário selecionado
+
         document.getElementById('nome').value = funcionario.nome;
         document.getElementById('idade').value = funcionario.idade;
         document.getElementById('cpf').value = funcionario.cpf;
@@ -81,7 +83,8 @@ function clearForm() {
     document.getElementById('telefone').value = '';
     document.getElementById('cargo').value = '';
     document.getElementById('acesso').value = '';
-    selectedFuncionario = null;
+
+    selectedFuncionarioId = null; // Limpa o ID do funcionário selecionado
 }
 
 // Função para verificar se todos os campos estão preenchidos
@@ -100,7 +103,7 @@ document.querySelector('.botoes-confirmacao').style.display = 'none';
 
 // Event Listeners para os botões principais
 document.querySelector('.btn-editar').addEventListener('click', function() {
-    if (!selectedFuncionario) {
+    if (!selectedFuncionarioId) {
         alert('Selecione um funcionário para editar');
         return;
     }
@@ -113,7 +116,7 @@ document.querySelector('.btn-editar').addEventListener('click', function() {
 });
 
 document.querySelector('.btn-deletar').addEventListener('click', function() {
-    if (!selectedFuncionario) {
+    if (!selectedFuncionarioId) {
         alert('Selecione um funcionário para deletar');
         return;
     }
@@ -155,14 +158,33 @@ document.querySelector('.btn-cancelar').addEventListener('click', function() {
 // Event Listener para botão confirmar
 document.querySelector('.btn-confirmar').addEventListener('click', function() {
     if (currentAction === 'delete') {
-        // Deletar o funcionário selecionado
-        funcionarios = funcionarios.filter(f => f.id !== selectedFuncionario.id);
+        if (!selectedFuncionarioId) {
+            alert('Nenhum funcionário selecionado para deletar.');
+            return;
+        }
 
-        // Atualizar a lista de funcionários
-        updateFuncionariosList();
-
-        // Limpar o formulário
-        clearForm();
+        // Enviar requisição DELETE para o servidor
+        fetch(`http://localhost:8080/as/funcionarios/${selectedFuncionarioId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Remover o funcionário da lista localmente e recarregar a lista do banco de dados
+                funcionarios = funcionarios.filter(f => f.id !== selectedFuncionarioId);
+                loadFuncionariosFromDatabase();
+                clearForm();
+                alert('Funcionário deletado com sucesso.');
+            } else {
+                throw new Error('Erro ao deletar funcionário.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao deletar funcionário:', error);
+            alert('Ocorreu um erro ao deletar o funcionário.');
+        });
 
     } else if (currentAction === 'create' || currentAction === 'edit') {
         if (!validateForm()) {
@@ -200,25 +222,11 @@ document.querySelector('.btn-confirmar').addEventListener('click', function() {
                     console.error('Erro ao cadastrar funcionário:', error);
                     alert('Ocorreu um erro ao cadastrar o funcionário.');
                 });
-        } else if (currentAction === 'edit') {
-            const indexEdit = funcionarios.findIndex(f => f.id === selectedFuncionario.id);
-            if (indexEdit !== -1) {
-                funcionarios[indexEdit] = {
-                    ...funcionarios[indexEdit],
-                    nome: document.getElementById('nome').value,
-                    idade: parseInt(document.getElementById('idade').value),
-                    cpf: document.getElementById('cpf').value,
-                    email: document.getElementById('email').value,
-                    telefone: document.getElementById('telefone').value,
-                    cargo: document.getElementById('cargo').value, // Alterado para string
-                    nivelAcesso: parseInt(document.getElementById('acesso').value) // Corrigido para parseInt
-                };
-            }
         }
     }
 
     // Atualizar a lista e limpar o estado
-    updateFuncionariosList();
+    loadFuncionariosFromDatabase();
     clearForm();
 
     // Desabilitar inputs e mostrar botões principais novamente
