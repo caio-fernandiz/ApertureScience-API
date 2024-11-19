@@ -68,7 +68,7 @@ input {
     letter-spacing: 1px;
 }
 
-.botaoLogar{
+.botaoLogar {
     width: 150px;
     height: 25px;
     font-family: 'AP2';
@@ -153,7 +153,6 @@ input {
     transform: scale(1.20);
 }
 
-
 .slider-container {
     flex: 1;
     padding: 20px;
@@ -175,24 +174,25 @@ input {
     transform: translateX(0);
 }
 
-
 .opcoes h2.active::before {
     background-color: rgba(194, 192, 192, 0.9);
 }
 
-.funcionarios-container {
+.funcionarios-container,
+.cobaias-container {
     display: flex;
     gap: 40px;
     padding: 20px;
     height: 100%;
 }
 
-.lista-funcionarios {
+.lista-funcionarios,
+.lista-cobaias {
     width: 600px;
 }
 
-
-.funcionarios-list {
+.funcionarios-list,
+.cobaias-list {
     width: 100%;
     margin-top: 10px;
     border: 1px solid #ccc;
@@ -201,26 +201,31 @@ input {
     overflow-y: auto;
 }
 
-.funcionario-item {
+.funcionario-item,
+.cobaia-item {
     padding: 10px 15px;
     border-bottom: 1px solid #eee;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-.funcionario-item:last-child {
+.funcionario-item:last-child,
+.cobaia-item:last-child {
     border-bottom: none;
 }
 
-.funcionario-item:hover {
+.funcionario-item:hover,
+.cobaia-item:hover {
     background-color: #f5f5f5;
 }
 
-.funcionario-item.selected {
+.funcionario-item.selected,
+.cobaia-item.selected {
     background-color: #e3e3e3;
 }
 
-.form-funcionario {
+.form-funcionario,
+.form-cobaias {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -246,13 +251,25 @@ input {
     font-size: 16px;
 }
 
-.botoes-principais, .botoes-confirmacao {
+.botoes-principais,
+.botoes-confirmacao,
+.botoes-principais-cobaias,
+.botoes-confirmacao-cobaias {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
 
-.btn-editar, .btn-deletar, .btn-cadastrar, .btn-cancelar, .btn-confirmar {
+.btn-editar,
+.btn-deletar,
+.btn-cadastrar,
+.btn-cancelar,
+.btn-confirmar,
+.btn-editar-cobaias,
+.btn-deletar-cobaias,
+.btn-cadastrar-cobaias,
+.btn-cancelar-cobaias,
+.btn-confirmar-cobaias {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -261,31 +278,43 @@ input {
     transition: background-color 0.3s ease;
 }
 
-.btn-editar {
+.btn-editar,
+.btn-editar-cobaias {
     background-color: #4CAF50;
     color: white;
 }
 
-.btn-deletar {
+.btn-deletar,
+.btn-deletar-cobaias {
     background-color: #f44336;
     color: white;
 }
 
-.btn-cadastrar{
+.btn-cadastrar,
+.btn-cadastrar-cobaias {
     background-color: orange;
     color: white;
 }
 
-.btn-cancelar {
+.btn-cancelar,
+.btn-cancelar-cobaias {
     background-color: #9e9e9e;
     color: white;
 }
 
-.btn-confirmar {
+.btn-confirmar,
+.btn-confirmar-cobaias {
     background-color: #2196F3;
     color: white;
 }
 
-.btn-editar:hover, .btn-deletar:hover, .btn-cancelar:hover, .btn-confirmar:hover {
+.btn-editar:hover,
+.btn-deletar:hover,
+.btn-cancelar:hover,
+.btn-confirmar:hover,
+.btn-editar-cobaias:hover,
+.btn-deletar-cobaias:hover,
+.btn-cancelar-cobaias:hover,
+.btn-confirmar-cobaias:hover {
     opacity: 0.9;
 }

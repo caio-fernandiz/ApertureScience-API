@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body class="menu">
-   <header class="headerMenu"> 
-    <img src="images/aperture_laboratories_logo.png" alt="" class="apertureLaboratoriesLogo">
-   </header> 
-   <div class="container">
+    <header class="headerMenu">
+        <img src="images/aperture_laboratories_logo.png" alt="" class="apertureLaboratoriesLogo">
+    </header>
+
+    <div class="container">
         <nav class="opcoes">
             <h2 class="levaParaFuncionarios active" onclick="showSlide(0)">Funcionários</h2>
             <h2 class="levaParaCobaias" onclick="showSlide(1)">Cobaias</h2>
@@ -18,6 +19,7 @@
         </nav>
 
         <div class="slider-container">
+            <!-- Funcionários -->
             <div class="slide funcionarios active">
                 <div class="funcionarios-container">
                     <div class="lista-funcionarios">
@@ -58,9 +60,9 @@
                         <div class="input-group">
                             <label for="acesso">Nível de Acesso:</label>
                             <select id="acesso" class="form-input">
-                                <option value=1>Nível 1</option>
-                                <option value=2>Nível 2</option>
-                                <option value=3>Nível 3</option>
+                                <option value="1">Nível 1</option>
+                                <option value="2">Nível 2</option>
+                                <option value="3">Nível 3</option>
                             </select>
                         </div>
                         <div class="botoes-principais">
@@ -75,33 +77,45 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Cobaias -->
             <div class="slide cobaias">
                 <h3>Cobaias</h3>
                 <div class="cobaias-container">
+                    <div class="lista-cobaias">
+                        <h3>Lista de Cobaias</h3>
+                        <div id="cobaiasList" class="cobaias-list">
+                            <!-- Cobaias serão adicionadas aqui dinamicamente -->
+                        </div>
+                    </div>
                     <div class="form-cobaias">
-                        <div class="input-group">
-                            <label for="nomeCobaias">Nome:</label>
-                            <input type="text" id="nomeCobaias" class="form-input">
-                        </div>
-                        <div class="input-group">
-                            <label for="idadeCobaias">Idade:</label>
-                            <input type="number" id="idadeCobaias" class="form-input">
-                        </div>
-                        <div class="input-group">
-                            <label for="cpfCobaias">CPF:</label>
-                            <input type="text" id="cpfCobaias" class="form-input">
-                        </div>
-                        <div class="input-group">
-                            <label for="alturaCobaias">Altura:</label>
-                            <input type="text" id="alturaCobaias" class="form-input">
+                        <div class="input-group-grouped">
+                            <div class="input-group">
+                                <label for="nomeCobaias">Nome:</label>
+                                <input type="text" id="nomeCobaias" class="form-input">
+                            </div>
+                            <div class="input-group">
+                                <label for="idadeCobaias">Idade:</label>
+                                <input type="number" id="idadeCobaias" class="form-input small-input">
+                            </div>
+                            <div class="input-group">
+                                <label for="alturaCobaias">Altura:</label>
+                                <input type="text" id="alturaCobaias" class="form-input small-input">
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="tipoSanguineoCobaias">Tipo Sanguíneo:</label>
                             <input type="text" id="tipoSanguineoCobaias" class="form-input">
                         </div>
-                        <div class="input-group">
-                            <label for="qiCobaias">QI:</label>
-                            <input type="number" id="qiCobaias" class="form-input">
+                        <div class="input-group-grouped">
+                            <div class="input-group">
+                                <label for="qiCobaias">QI:</label>
+                                <input type="number" id="qiCobaias" class="form-input small-input">
+                            </div>
+                            <div class="input-group">
+                                <label for="formacaoAcademicaCobaias">Formação Acadêmica:</label>
+                                <input type="text" id="formacaoAcademicaCobaias" class="form-input">
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="resultadoTesteResistenciaCobaias">Resultado Teste de Resistência:</label>
@@ -115,10 +129,6 @@
                             <label for="resultadoTesteVelocidadeCobaias">Resultado Teste de Velocidade:</label>
                             <input type="number" id="resultadoTesteVelocidadeCobaias" class="form-input">
                         </div>
-                        <div class="input-group">
-                            <label for="formacaoAcademicaCobaias">Formação Acadêmica:</label>
-                            <input type="text" id="formacaoAcademicaCobaias" class="form-input">
-                        </div>
                         <div class="botoes-principais-cobaias">
                             <button class="btn-editar-cobaias">Editar</button>
                             <button class="btn-deletar-cobaias">Deletar</button>
@@ -131,14 +141,15 @@
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Testes -->
             <div class="slide testes">
                 <h3>Testes</h3>
                 <p>Conteúdo sobre testes aqui...</p>
             </div>
         </div>
-   </div>
+    </div>
 
-   <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
