@@ -18,7 +18,6 @@ showSlide(0);
 // Array para armazenar os funcionários
 
 let currentAction = null;
-
 let selectedFuncionarioId = null; // Variável global para armazenar o ID do funcionário selecionado
 
 // Função para carregar funcionários do banco de dados
@@ -222,6 +221,35 @@ document.querySelector('.btn-confirmar').addEventListener('click', function() {
                     console.error('Erro ao cadastrar funcionário:', error);
                     alert('Ocorreu um erro ao cadastrar o funcionário.');
                 });
+        } else if (currentAction === 'edit') {
+            const updatedFuncionario = {
+                nome: document.getElementById('nome').value,
+                idade: parseInt(document.getElementById('idade').value),
+                cpf: document.getElementById('cpf').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                cargo: document.getElementById('cargo').value, // Alterado para string
+                nivelAcesso: parseInt(document.getElementById('acesso').value) // Mantido como int
+            };
+
+            // Enviar funcionário atualizado ao servidor
+            fetch(`http://localhost:8080/as/funcionarios/${selectedFuncionarioId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedFuncionario),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Recarregar todos os funcionários do banco de dados
+                    loadFuncionariosFromDatabase();
+                    clearForm();
+                })
+                .catch(error => {
+                    console.error('Erro ao atualizar funcionário:', error);
+                    alert('Ocorreu um erro ao atualizar o funcionário.');
+                });
         }
     }
 
@@ -237,6 +265,7 @@ document.querySelector('.btn-confirmar').addEventListener('click', function() {
     document.querySelector('.botoes-confirmacao').style.display = 'none';
     currentAction = null;
 });
+
 
 // Inicializar a lista de funcionários ao carregar a página
 document.addEventListener('DOMContentLoaded', loadFuncionariosFromDatabase);
