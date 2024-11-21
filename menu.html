@@ -21,7 +21,7 @@
         <div class="slider-container">
             <!-- Funcionários -->
             <div class="slide funcionarios active">
-                <div class="funcionarios-container">
+                <div class="funcionarios-container">''
                     <div class="lista-funcionarios">
                         <h3>Lista de Funcionários</h3>
                         <div id="funcionariosList" class="funcionarios-list">
@@ -31,27 +31,27 @@
                     <div class="form-funcionario">
                         <div class="input-group">
                             <label for="nome">Nome:</label>
-                            <input type="text" id="nome" class="form-input">
+                            <input type="text" id="nome" class="form-inputF">
                         </div>
                         <div class="input-group">
                             <label for="idade">Idade:</label>
-                            <input type="number" id="idade" class="form-input">
+                            <input type="number" id="idade" class="form-inputF">
                         </div>
                         <div class="input-group">
                             <label for="cpf">CPF:</label>
-                            <input type="text" id="cpf" class="form-input">
+                            <input type="text" id="cpf" class="form-inputF">
                         </div>
                         <div class="input-group">
                             <label for="email">Email:</label>
-                            <input type="email" id="email" class="form-input">
+                            <input type="email" id="email" class="form-inputF">
                         </div>
                         <div class="input-group">
                             <label for="telefone">Telefone:</label>
-                            <input type="tel" id="telefone" class="form-input">
+                            <input type="tel" id="telefone" class="form-inputF">
                         </div>
                         <div class="input-group">
                             <label for="cargo">Cargo:</label>
-                            <select id="cargo" class="form-input">
+                            <select id="cargo" class="form-inputF">
                                 <option value="Segurança">Segurança</option>
                                 <option value="Cientista">Cientista</option>
                                 <option value="Diretor">Diretor</option>
@@ -59,88 +59,89 @@
                         </div>
                         <div class="input-group">
                             <label for="acesso">Nível de Acesso:</label>
-                            <select id="acesso" class="form-input">
+                            <select id="acesso" class="form-inputF">
                                 <option value="1">Nível 1</option>
                                 <option value="2">Nível 2</option>
                                 <option value="3">Nível 3</option>
                             </select>
                         </div>
-                        <div class="botoes-principais">
-                            <button class="btn-editar">Editar</button>
-                            <button class="btn-deletar">Deletar</button>
-                            <button class="btn-cadastrar">Cadastrar</button>
+                        <div class="botoes-principaisF">
+                            <button class="btn-editarF">Editar</button>
+                            <button class="btn-deletarF">Deletar</button>
+                            <button class="btn-cadastrarF">Cadastrar</button>
                         </div>
-                        <div class="botoes-confirmacao">
-                            <button class="btn-cancelar">Cancelar</button>
-                            <button class="btn-confirmar">Confirmar</button>
+                        <div class="botoes-confirmacaoF">
+                            <button class="btn-cancelarF">Cancelar</button>
+                            <button class="btn-confirmarF">Confirmar</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Cobaias -->
-            <div class="slide cobaias">
-                <h3>Cobaias</h3>
-                <div class="cobaias-container">
-                    <div class="lista-cobaias">
-                        <h3>Lista de Cobaias</h3>
-                        <div id="cobaiasList" class="cobaias-list">
-                            <!-- Cobaias serão adicionadas aqui dinamicamente -->
+           <!-- Cobaias -->
+           <div class="slide cobaias">
+            <h3>Cobaias</h3>
+            <div class="cobaias-container">
+                <div class="lista-cobaias">
+                    <h3>Lista de Cobaias</h3>
+                    <div id="cobaiasList" class="cobaias-list">
+                        <!-- Cobaias serão adicionadas aqui dinamicamente -->
+                    </div>
+                </div>
+                <div class="form-cobaias">
+                    <div class="input-group-grouped">
+                        <div class="input-group">
+                            <label for="nomeCobaias">Nome:</label>
+                            <input type="text" id="nomeCobaias" class="form-inputC">
+                        </div>
+                        <div class="input-group">
+                            <label for="idadeCobaias">Idade:</label>
+                            <input type="number" id="idadeCobaias" class="form-inputC">
+                        </div>
+                        <div class="input-group">
+                            <label for="alturaCobaias">Altura:</label>
+                            <input type="text" id="alturaCobaias" class="form-inputC">
                         </div>
                     </div>
-                    <div class="form-cobaias">
-                        <div class="input-group-grouped">
-                            <div class="input-group">
-                                <label for="nomeCobaias">Nome:</label>
-                                <input type="text" id="nomeCobaias" class="form-input">
-                            </div>
-                            <div class="input-group">
-                                <label for="idadeCobaias">Idade:</label>
-                                <input type="number" id="idadeCobaias" class="form-input small-input">
-                            </div>
-                            <div class="input-group">
-                                <label for="alturaCobaias">Altura:</label>
-                                <input type="text" id="alturaCobaias" class="form-input small-input">
-                            </div>
+                    <div class="input-group">
+                        <label for="tipoSanguineoCobaias">Tipo Sanguíneo:</label>
+                        <input type="text" id="tipoSanguineoCobaias" class="form-inputC">
+                    </div>
+                    <div class="input-group-grouped">
+                        <div class="input-group">
+                            <label for="qiCobaias">QI:</label>
+                            <input type="number" id="qiCobaias" class="form-inputC">
                         </div>
                         <div class="input-group">
-                            <label for="tipoSanguineoCobaias">Tipo Sanguíneo:</label>
-                            <input type="text" id="tipoSanguineoCobaias" class="form-input">
+                            <label for="formacaoAcademicaCobaias">Formação Acadêmica:</label>
+                            <input type="text" id="formacaoAcademicaCobaias" class="form-inputC">
                         </div>
-                        <div class="input-group-grouped">
-                            <div class="input-group">
-                                <label for="qiCobaias">QI:</label>
-                                <input type="number" id="qiCobaias" class="form-input small-input">
-                            </div>
-                            <div class="input-group">
-                                <label for="formacaoAcademicaCobaias">Formação Acadêmica:</label>
-                                <input type="text" id="formacaoAcademicaCobaias" class="form-input">
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="resultadoTesteResistenciaCobaias">Resultado Teste de Resistência:</label>
-                            <input type="number" id="resultadoTesteResistenciaCobaias" class="form-input">
-                        </div>
-                        <div class="input-group">
-                            <label for="resultadoTesteForcaCobaias">Resultado Teste de Força:</label>
-                            <input type="number" id="resultadoTesteForcaCobaias" class="form-input">
-                        </div>
-                        <div class="input-group">
-                            <label for="resultadoTesteVelocidadeCobaias">Resultado Teste de Velocidade:</label>
-                            <input type="number" id="resultadoTesteVelocidadeCobaias" class="form-input">
-                        </div>
-                        <div class="botoes-principais-cobaias">
-                            <button class="btn-editar-cobaias">Editar</button>
-                            <button class="btn-deletar-cobaias">Deletar</button>
-                            <button class="btn-cadastrar-cobaias">Cadastrar</button>
-                        </div>
-                        <div class="botoes-confirmacao-cobaias">
-                            <button class="btn-cancelar-cobaias">Cancelar</button>
-                            <button class="btn-confirmar-cobaias">Confirmar</button>
-                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="resultadoTesteResistenciaCobaias">Resultado Teste de Resistência:</label>
+                        <input type="number" id="resultadoTesteResistenciaCobaias" class="form-inputC">
+                    </div>
+                    <div class="input-group">
+                        <label for="resultadoTesteForcaCobaias">Resultado Teste de Força:</label>
+                        <input type="number" id="resultadoTesteForcaCobaias" class="form-inputC">
+                    </div>
+                    <div class="input-group">
+                        <label for="resultadoTesteVelocidadeCobaias">Resultado Teste de Velocidade:</label>
+                        <input type="number" id="resultadoTesteVelocidadeCobaias" class="form-inputC">
+                    </div>
+                    <div class="botoes-principaisC">
+                        <button class="btn-editarC">Editar</button>
+                        <button class="btn-deletarC">Deletar</button>
+                        <button class="btn-cadastrarC">Cadastrar</button>
+                    </div>
+                    <div class="botoes-confirmacaoC">
+                        <button class="btn-cancelarC">Cancelar</button>
+                        <button class="btn-confirmarC">Confirmar</button>
                     </div>
                 </div>
             </div>
+        </div>
+             
 
             <!-- Testes -->
             <div class="slide testes">
@@ -151,5 +152,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="funcionarios.js"></script>
+    <script src="cobaias.js"></script>
 </body>
 </html>
