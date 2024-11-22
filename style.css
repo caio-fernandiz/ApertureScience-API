@@ -232,11 +232,16 @@ input {
     gap: 15px;
 }
 
+.input-row {
+    display: flex;
+    gap: 15px;
+    width: 10px;
+}
+
 .input-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    max-width: 200px;
 }
 
 .input-group label {
@@ -318,4 +323,40 @@ input {
 .btn-cancelarC:hover,
 .btn-confirmarC:hover {
     opacity: 0.9;
+}
+
+#nome{
+    width: 165px;
+}
+
+
+#nomeCobaias{
+
+    width: 80px;
+}
+
+#idade{
+    width: 35px;
+}
+
+#idadeCobaias{
+    width: 35px;
+}
+
+#qiCobaias{
+    width: 35px
+    ;
+}
+
+#cargo, #acesso{
+    width: 285px;
+    height: 35px;
+}
+
+#alturaCobaias{
+width: 100px;
+}
+
+#tipoSanguineoCobaias{
+    width: 100px;
 }
