@@ -1,6 +1,6 @@
 // Array para armazenar os funcionários
 
-let currentAction = null;
+let currentActionF = null;
 let selectedFuncionarioId = null; // Variável global para armazenar o ID do funcionário selecionado
 
 // Função para carregar funcionários do banco de dados
@@ -89,7 +89,7 @@ document.querySelector('.btn-editarF').addEventListener('click', function() {
         alert('Selecione um funcionário para editar');
         return;
     }
-    currentAction = 'edit';
+    currentActionF = 'edit';
     document.querySelectorAll('.form-inputF').forEach(input => {
         input.disabled = false;
     });
@@ -103,13 +103,13 @@ document.querySelector('.btn-deletarF').addEventListener('click', function() {
         return;
     }
 
-    currentAction = 'delete';
+    currentActionF = 'delete';
     document.querySelector('.botoes-principaisF').style.display = 'none';
     document.querySelector('.botoes-confirmacaoF').style.display = 'flex';
 });
 
 document.querySelector('.btn-cadastrarF').addEventListener('click', function() {
-    currentAction = 'create';
+    currentActionF = 'create';
     clearForm();
     
     // Habilitar inputs para cadastro
@@ -134,12 +134,12 @@ document.querySelector('.btn-cancelarF').addEventListener('click', function() {
     // Exibir botões principais novamente
     document.querySelector('.botoes-principaisF').style.display = 'flex';
     document.querySelector('.botoes-confirmacaoF').style.display = 'none';
-    currentAction = null;
+    currentActionF = null;
 });
 
 // Event Listener para botão confirmar
 document.querySelector('.btn-confirmarF').addEventListener('click', function() {
-    if (currentAction === 'delete') {
+    if (currentActionF === 'delete') {
         if (!selectedFuncionarioId) {
             alert('Nenhum funcionário selecionado para deletar.');
             return;
@@ -168,13 +168,13 @@ document.querySelector('.btn-confirmarF').addEventListener('click', function() {
             alert('Ocorreu um erro ao deletar o funcionário.');
         });
 
-    } else if (currentAction === 'create' || currentAction === 'edit') {
+    } else if (currentActionF === 'create' || currentActionF === 'edit') {
         if (!validateForm()) {
             alert('Por favor, preencha todos os campos');
             return;
         }
 
-        if (currentAction === 'create') {
+        if (currentActionF === 'create') {
             // Criar novo funcionário
             const newFuncionario = {
                 nome: document.getElementById('nome').value,
@@ -204,7 +204,7 @@ document.querySelector('.btn-confirmarF').addEventListener('click', function() {
                     console.error('Erro ao cadastrar funcionário:', error);
                     alert('Ocorreu um erro ao cadastrar o funcionário.');
                 });
-        } else if (currentAction === 'edit') {
+        } else if (currentActionF === 'edit') {
             const updatedFuncionario = {
                 nome: document.getElementById('nome').value,
                 idade: parseInt(document.getElementById('idade').value),
@@ -246,7 +246,7 @@ document.querySelector('.btn-confirmarF').addEventListener('click', function() {
     });
     document.querySelector('.botoes-principaisF').style.display = 'flex';
     document.querySelector('.botoes-confirmacaoF').style.display = 'none';
-    currentAction = null;
+    currentActionF = null;
 });
 
 
