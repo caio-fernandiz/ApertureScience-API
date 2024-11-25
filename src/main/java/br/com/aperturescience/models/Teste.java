@@ -18,6 +18,7 @@ public class Teste {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String camaraAtual;
+    private String titulo;
     private String objetivoTeste;
     private String descricaoTeste;
     private String anotacoes;

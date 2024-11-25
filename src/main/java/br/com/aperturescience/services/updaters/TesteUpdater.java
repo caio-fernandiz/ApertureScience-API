@@ -11,6 +11,8 @@ public class TesteUpdater {
     public void atualizarTeste(Teste Teste, TesteFormUpdateDTO form) {
         if (form.camaraAtual() != null)
             Teste.setCamaraAtual(form.camaraAtual());
+        if(form.titulo() != null)
+            Teste.setTitulo(form.titulo());
         if (form.objetivoTeste() != null)
             Teste.setObjetivoTeste(form.objetivoTeste());
         if (form.descricaoTeste() != null)
