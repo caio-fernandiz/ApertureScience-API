@@ -288,7 +288,6 @@ input {
 .btn-cancelarC,
 .btn-confirmarC,
 .btn-editarT,
-.btn-deletarT,
 .btn-cadastrarT,
 .btn-cancelarT,
 .btn-confirmarT {
@@ -308,8 +307,7 @@ input {
 }
 
 .btn-deletarF,
-.btn-deletarC,
-.btn-deletarT {
+.btn-deletarC {
     background-color: #f44336;
     color: white;
 }
@@ -344,7 +342,6 @@ input {
 .btn-cancelarC:hover,
 .btn-confirmarC:hover,
 .btn-editarT:hover,
-.btn-deletarT:hover,
 .btn-cancelarT:hover,
 .btn-confirmarT:hover {
     opacity: 0.9;

@@ -1,33 +1,33 @@
 // Elementos do DOM
 const funcionariosList = document.getElementById('funcionariosList');
-const inputs = document.querySelectorAll('.form-inputF');
-const btnCadastrar = document.querySelector('.btn-cadastrarF');
-const btnEditar = document.querySelector('.btn-editarF');
-const btnDeletar = document.querySelector('.btn-deletarF');
-const btnConfirmar = document.querySelector('.btn-confirmarF');
-const btnCancelar = document.querySelector('.btn-cancelarF');
-const botoesPrincipais = document.querySelector('.botoes-principaisF');
-const botoesConfirmacao = document.querySelector('.botoes-confirmacaoF');
+const inputsF = document.querySelectorAll('.form-inputF');
+const btnCadastrarF = document.querySelector('.btn-cadastrarF');
+const btnEditarF = document.querySelector('.btn-editarF');
+const btnDeletarF = document.querySelector('.btn-deletarF');
+const btnConfirmarF = document.querySelector('.btn-confirmarF');
+const btnCancelarF = document.querySelector('.btn-cancelarF');
+const botoesPrincipaisF = document.querySelector('.botoes-principaisF');
+const botoesConfirmacaoF = document.querySelector('.botoes-confirmacaoF');
 
 // Estado da aplicação
 let funcionarioSelecionado = null;
-let acaoAtual = null; // 'cadastrar', 'editar' ou 'deletar'
+let acaoAtualF = null; // 'cadastrar', 'editar' ou 'deletar'
 
 // Esconder botões de confirmação inicialmente
-botoesConfirmacao.style.display = 'none';
+botoesConfirmacaoF.style.display = 'none';
 
-// Desabilitar inputs inicialmente
-function desabilitarInputs() {
-    inputs.forEach(input => input.disabled = true);
+// Desabilitar inputsF inicialmente
+function desabilitarinputsF() {
+    inputsF.forEach(input => input.disabled = true);
 }
 
-// Habilitar inputs
-function habilitarInputs() {
-    inputs.forEach(input => input.disabled = false);
+// Habilitar inputsF
+function habilitarinputsF() {
+    inputsF.forEach(input => input.disabled = false);
 }
 
-// Inicializar com inputs desabilitados
-desabilitarInputs();
+// Inicializar com inputsF desabilitados
+desabilitarinputsF();
 
 // Função para carregar funcionários
 async function carregarFuncionarios() {
@@ -51,64 +51,64 @@ async function carregarFuncionarios() {
 // Função para selecionar funcionário
 function selecionarFuncionario(funcionario) {
     funcionarioSelecionado = funcionario;
-    // Preencher inputs com dados do funcionário
+    // Preencher inputsF com dados do funcionário
     document.getElementById('nome').value = funcionario.nome;
     document.getElementById('idade').value = funcionario.idade;
     document.getElementById('cpf').value = funcionario.cpf;
     document.getElementById('email').value = funcionario.email;
     document.getElementById('telefone').value = funcionario.telefone;
     document.getElementById('cargo').value = funcionario.cargo;
-    document.getElementById('acesso').value = funcionario.acesso;
-    // Manter inputs desabilitados ao selecionar
-    desabilitarInputs();
+    document.getElementById('acesso').value = funcionario.nivelAcesso;
+    // Manter inputsF desabilitados ao selecionar
+    desabilitarinputsF();
 }
 
-// Função para limpar inputs
-function limparInputs() {
-    inputs.forEach(input => input.value = '');
+// Função para limpar inputsF
+function limparinputsF() {
+    inputsF.forEach(input => input.value = '');
     funcionarioSelecionado = null;
 }
 
 // Função para mostrar/esconder botões
-function toggleBotoes(mostrarConfirmacao) {
-    botoesPrincipais.style.display = mostrarConfirmacao ? 'none' : 'flex';
-    botoesConfirmacao.style.display = mostrarConfirmacao ? 'flex' : 'none';
+function toggleBotoesF(mostrarConfirmacao) {
+    botoesPrincipaisF.style.display = mostrarConfirmacao ? 'none' : 'flex';
+    botoesConfirmacaoF.style.display = mostrarConfirmacao ? 'flex' : 'none';
 }
 
 // Event Listeners para botões principais
-btnCadastrar.addEventListener('click', () => {
-    limparInputs();
-    habilitarInputs();
-    acaoAtual = 'cadastrar';
-    toggleBotoes(true);
+btnCadastrarF.addEventListener('click', () => {
+    limparinputsF();
+    habilitarinputsF();
+    acaoAtualF = 'cadastrar';
+    toggleBotoesF(true);
 });
 
-btnEditar.addEventListener('click', () => {
+btnEditarF.addEventListener('click', () => {
     if (!funcionarioSelecionado) return;
-    habilitarInputs();
-    acaoAtual = 'editar';
-    toggleBotoes(true);
+    habilitarinputsF();
+    acaoAtualF = 'editar';
+    toggleBotoesF(true);
 });
 
-btnDeletar.addEventListener('click', () => {
+btnDeletarF.addEventListener('click', () => {
     if (!funcionarioSelecionado) return;
-    acaoAtual = 'deletar';
-    toggleBotoes(true);
+    acaoAtualF = 'deletar';
+    toggleBotoesF(true);
 });
 
 // Event Listener para botão cancelar
-btnCancelar.addEventListener('click', () => {
-    if (acaoAtual === 'cadastrar') {
-        limparInputs();
-    } else if (acaoAtual === 'editar') {
+btnCancelarF.addEventListener('click', () => {
+    if (acaoAtualF === 'cadastrar') {
+        limparinputsF();
+    } else if (acaoAtualF === 'editar') {
         selecionarFuncionario(funcionarioSelecionado);
     }
-    desabilitarInputs();
-    toggleBotoes(false);
+    desabilitarinputsF();
+    toggleBotoesF(false);
 });
 
 // Event Listener para botão confirmar
-btnConfirmar.addEventListener('click', async () => {
+btnConfirmarF.addEventListener('click', async () => {
     try {
         let url = 'http://localhost:8080/as/funcionarios';
         let method = 'POST';
@@ -119,13 +119,13 @@ btnConfirmar.addEventListener('click', async () => {
             email: document.getElementById('email').value,
             telefone: document.getElementById('telefone').value,
             cargo: document.getElementById('cargo').value,
-            acesso: parseInt(document.getElementById('acesso').value)
+            nivelAcesso: parseInt(document.getElementById('acesso').value)
         };
 
-        if (acaoAtual === 'editar') {
+        if (acaoAtualF === 'editar') {
             url += `/${funcionarioSelecionado.id}`;
             method = 'PUT';
-        } else if (acaoAtual === 'deletar') {
+        } else if (acaoAtualF === 'deletar') {
             url += `/${funcionarioSelecionado.id}`;
             method = 'DELETE';
             body = null;
@@ -141,9 +141,9 @@ btnConfirmar.addEventListener('click', async () => {
 
         if (response.ok) {
             await carregarFuncionarios();
-            limparInputs();
-            desabilitarInputs();
-            toggleBotoes(false);
+            limparinputsF();
+            desabilitarinputsF();
+            toggleBotoesF(false);
         } else {
             throw new Error('Erro na operação');
         }
@@ -154,3 +154,4 @@ btnConfirmar.addEventListener('click', async () => {
 
 // Carregar funcionários ao iniciar
 carregarFuncionarios();
+
