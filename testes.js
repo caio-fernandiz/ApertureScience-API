@@ -38,7 +38,7 @@ async function carregarTestes() {
         testes.forEach(teste => {
             const div = document.createElement('div');
             div.className = 'teste-item';
-            div.textContent = teste.nome;
+            div.textContent = teste.titulo;
             div.addEventListener('click', () => selecionarTeste(teste));
             testesList.appendChild(div);
         });
@@ -51,11 +51,15 @@ async function carregarTestes() {
 function selecionarTeste(teste) {
     testeSelecionado = teste;
     // Preencher inputs com dados do teste
-    document.getElementById('nomeTeste').value = teste.nome;
-    document.getElementById('descricaoTeste').value = teste.descricao;
-    document.getElementById('tipoTeste').value = teste.tipo;
-    document.getElementById('duracaoTeste').value = teste.duracao;
-    document.getElementById('pontuacaoMaxima').value = teste.pontuacaoMaxima;
+    document.getElementById('camaraAtual').value = teste.camaraAtual;
+document.getElementById('titulo').value = teste.titulo;
+document.getElementById('objetivoTeste').value = teste.objetivoTeste;
+document.getElementById('descricaoTeste').value = teste.descricaoTeste;
+document.getElementById('anotacoes').value = teste.anotacoes;
+document.getElementById('quantidadeTestes').value = teste.quantidadeTestes;
+document.getElementById('baixas').value = teste.baixas;
+document.getElementById('resultadoAtual').value = teste.resultadoAtual;
+
     // Manter inputs desabilitados ao selecionar
     desabilitarInputs();
 }
@@ -104,11 +108,14 @@ btnConfirmar.addEventListener('click', async () => {
         let url = 'http://localhost:8080/as/testes';
         let method = 'POST';
         let body = {
-            nome: document.getElementById('nomeTeste').value,
-            descricao: document.getElementById('descricaoTeste').value,
-            tipo: document.getElementById('tipoTeste').value,
-            duracao: parseInt(document.getElementById('duracaoTeste').value),
-            pontuacaoMaxima: parseInt(document.getElementById('pontuacaoMaxima').value)
+            camaraAtual: document.getElementById('camaraAtual').value, 
+            titulo: document.getElementById('titulo').value, 
+            objetivoTeste: document.getElementById('objetivoTeste').value, 
+            descricaoTeste: document.getElementById('descricaoTeste').value,
+             anotacoes: document.getElementById('anotacoes').value, 
+             quantidadeTestes: parseInt(document.getElementById('quantidadeTestes').value), 
+             resultadoAtual: document.getElementById('resultadoAtual').value, 
+             baixas: parseInt(document.getElementById('baixas').value)
         };
 
         if (acaoAtual === 'editar') {
