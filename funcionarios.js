@@ -1,6 +1,7 @@
 // Elementos do DOM
 const funcionariosList = document.getElementById('funcionariosList');
 const inputsF = document.querySelectorAll('.form-inputF');
+const selectsF = document.querySelectorAll('.form-selectF');
 const btnCadastrarF = document.querySelector('.btn-cadastrarF');
 const btnEditarF = document.querySelector('.btn-editarF');
 const btnDeletarF = document.querySelector('.btn-deletarF');
@@ -19,11 +20,19 @@ botoesConfirmacaoF.style.display = 'none';
 // Desabilitar inputsF inicialmente
 function desabilitarinputsF() {
     inputsF.forEach(input => input.disabled = true);
+    selectsF.forEach(input => {
+        input.disabled = true;
+        input.classList.remove('highlight-border');  // Remove a classe
+    });
 }
 
 // Habilitar inputsF
 function habilitarinputsF() {
     inputsF.forEach(input => input.disabled = false);
+    selectsF.forEach(input => {
+        input.disabled = false;
+        input.classList.add('highlight-border');  // Adiciona a classe
+    });
 }
 
 // Inicializar com inputsF desabilitados

@@ -1,6 +1,7 @@
 // Elementos do DOM
 const testesList = document.getElementById('testesList');
 const inputsT = document.querySelectorAll('.form-inputT');
+const txtasT = document.querySelectorAll('.form-txta');
 const btnCadastrarT = document.querySelector('.btn-cadastrarT');
 const btnEditarT = document.querySelector('.btn-editarT');
 const btnConfirmarT = document.querySelector('.btn-confirmarT');
@@ -18,11 +19,18 @@ botoesConfirmacaoT.style.display = 'none';
 // Desabilitar inputsT inicialmente
 function desabilitarInputs() {
     inputsT.forEach(input => input.disabled = true);
+    txtasT.forEach(input => {
+        input.disabled = true;
+        input.classList.remove('highlight-border');  // Remove a classe
+    });
 }
 
 // Habilitar inputsTT
 function habilitarInputs() {
     inputsT.forEach(input => input.disabled = false);
+    txtasT.forEach(input => {input.disabled = false;
+        input.classList.add('highlight-border');
+      });
 }
 
 // Inicializar com inputsT desabilitados
@@ -67,6 +75,7 @@ document.getElementById('resultadoAtual').value = teste.resultadoAtual;
 // Função para limpar inputsT
 function limparInputs() {
     inputsT.forEach(input => input.value = '');
+    txtasT.forEach(input => input.value = '');
     testeSelecionado = null;
 }
 
