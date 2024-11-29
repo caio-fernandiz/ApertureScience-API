@@ -1,6 +1,7 @@
 // Elementos do DOM
 const cobaiasList = document.getElementById('cobaiasList');
 const inputsC = document.querySelectorAll('.form-inputC');
+const selectsC = document.querySelectorAll('.form-selectC');
 const btnCadastrarC = document.querySelector('.btn-cadastrarC');
 const btnEditarC = document.querySelector('.btn-editarC');
 const btnDeletarC = document.querySelector('.btn-deletarC');
@@ -16,10 +17,18 @@ botoesConfirmacaoC.style.display = 'none';
 // Desabilitar inputsC inicialmente
 function desabilitarinputsC() {
     inputsC.forEach(input => input.disabled = true);
+    selectsC.forEach(input => {
+        input.disabled = true;
+        input.classList.remove('highlight-border');  // Remove a classe
+    });
 }
 // Habilitar inputsC
 function habilitarinputsC() {
     inputsC.forEach(input => input.disabled = false);
+    selectsC.forEach(input => {
+        input.disabled = false;
+        input.classList.add('highlight-border');  // Adiciona a classe
+    });
 }
 // Inicializar com inputsC desabilitados
 desabilitarinputsC();

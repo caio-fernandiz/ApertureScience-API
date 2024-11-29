@@ -286,12 +286,11 @@ input {
     outline: none;  /* Remove o contorno padrão ao focar */
 }
 
-.form-selectF{
+.form-selectF, .form-selectC{
     border-radius: 8px;  /* Borda arredondada */
     border: 2px solid #ccc;  /* Cor da borda (ajuste se necessário) */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);  /* Sombra suave */
     outline: none;
-
 }
 
 /* Adiciona efeito de foco */
@@ -300,10 +299,7 @@ input {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);  /* Ajusta a sombra ao focar */
 }
 
-.highlight-border {
-    border: 2px solid black;
 
-}
 
 .botoes-principaisF,
 .botoes-confirmacaoF,
@@ -419,7 +415,8 @@ width: 100px;
 }
 
 #tipoSanguineoCobaias{
-    width: 100px;
+    width: 135px;
+    height: 35px;
 }
 
 #quantidadeTestes{
@@ -438,4 +435,9 @@ width: 100px;
 
 #objetivoTeste{
     height: 90px;
+}
+
+.highlight-border {
+    border: 2px solid black;
+
 }
