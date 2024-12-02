@@ -1,5 +1,12 @@
 package br.com.aperturescience.models;
 
+import java.util.Collection;
+import java.util.Collections;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import br.com.aperturescience.util.GeradorDeLogin;
 import br.com.aperturescience.util.GeradorDeSenha;
 import jakarta.persistence.Entity;
@@ -15,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-public class Funcionario {
+public class Funcionario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,5 +41,25 @@ public class Funcionario {
     protected void onCreate(){
         this.codigoLogin = GeradorDeLogin.gerarCodigoAleatorio();
         this.senha = GeradorDeSenha.gerarSenha();
+    }
+
+       @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Definir autoridades baseado no nível de acesso
+        return Collections.singletonList(
+            new SimpleGrantedAuthority("ROLE_" + 
+                (nivelAcesso != null ? "NIVEL_" + nivelAcesso : "USER"))
+        );
+    }
+
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.codigoLogin;
     }
 }
