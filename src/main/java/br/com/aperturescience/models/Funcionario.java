@@ -2,13 +2,16 @@ package br.com.aperturescience.models;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import br.com.aperturescience.infra.security.UserRole;
 import br.com.aperturescience.util.GeradorDeLogin;
 import br.com.aperturescience.util.GeradorDeSenha;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,7 +35,8 @@ public class Funcionario implements UserDetails {
     private String cpf;
     private String email;
     private String telefone;
-    private String cargo;
+    @Column(name = "cargo", length = 50) 
+    private UserRole cargo;
     private Integer nivelAcesso;
     private String senha;
     private String codigoLogin;
@@ -43,23 +47,19 @@ public class Funcionario implements UserDetails {
         this.senha = GeradorDeSenha.gerarSenha();
     }
 
-       @Override
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Definir autoridades baseado no nível de acesso
-        return Collections.singletonList(
-            new SimpleGrantedAuthority("ROLE_" + 
-                (nivelAcesso != null ? "NIVEL_" + nivelAcesso : "USER"))
-        );
+        if(this.cargo == UserRole.SEGURANCA) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
-
 
     @Override
     public String getPassword() {
-        return this.senha;
+        return senha;
     }
 
     @Override
     public String getUsername() {
-        return this.codigoLogin;
+        return codigoLogin;
     }
 }
