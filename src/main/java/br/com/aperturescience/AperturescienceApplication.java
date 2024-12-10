@@ -9,5 +9,4 @@ public class AperturescienceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AperturescienceApplication.class, args);
 	}
-
 }

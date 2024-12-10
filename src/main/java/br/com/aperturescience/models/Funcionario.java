@@ -11,7 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import br.com.aperturescience.infra.security.UserRole;
 import br.com.aperturescience.util.GeradorDeLogin;
 import br.com.aperturescience.util.GeradorDeSenha;
+import br.com.aperturescience.util.UserRoleConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,6 +37,7 @@ public class Funcionario implements UserDetails {
     private String cpf;
     private String email;
     private String telefone;
+    @Convert(converter = UserRoleConverter.class)
     @Column(name = "cargo", length = 50) 
     private UserRole cargo;
     private Integer nivelAcesso;

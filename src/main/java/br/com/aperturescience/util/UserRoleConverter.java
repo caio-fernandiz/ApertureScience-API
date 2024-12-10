@@ -1,5 +1,6 @@
-package br.com.aperturescience.infra.security;
+package br.com.aperturescience.util;
 
+import br.com.aperturescience.infra.security.UserRole;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
