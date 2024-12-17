@@ -1,5 +1,5 @@
 package br.com.aperturescience.dtos.logins;
 
-public class RegisterDTO {
+public record RegisterDTO (String codigoLogin, String senha, String role){
 
 }
