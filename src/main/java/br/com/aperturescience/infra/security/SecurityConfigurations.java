@@ -22,7 +22,9 @@ public class SecurityConfigurations {
                .csrf(csrf -> csrf.disable())
                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                .authorizeHttpRequests(authorize -> authorize
-                     .requestMatchers(HttpMethod.POST, "/as/funcionarios").hasRole("SEGURANCA")
+                     .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                     .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                     .requestMatchers(HttpMethod.POST, "/as/funcionarios").hasRole("DIRETOR")
                      .anyRequest().authenticated()
                                 )
                .build();
@@ -33,6 +35,7 @@ public class SecurityConfigurations {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }

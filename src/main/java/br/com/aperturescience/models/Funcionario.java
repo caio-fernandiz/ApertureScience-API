@@ -44,15 +44,16 @@ public class Funcionario implements UserDetails {
     private String senha;
     private String codigoLogin;
     
-    @PrePersist
-    protected void onCreate(){
-        this.codigoLogin = GeradorDeLogin.gerarCodigoAleatorio();
-        this.senha = GeradorDeSenha.gerarSenha();
+    public Funcionario(String codigoLogin, String senha, UserRole cargo){
+        this.codigoLogin = codigoLogin;
+        this.senha = senha;
+        this.cargo = cargo;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.cargo == UserRole.SEGURANCA) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        if(this.cargo == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
         else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
