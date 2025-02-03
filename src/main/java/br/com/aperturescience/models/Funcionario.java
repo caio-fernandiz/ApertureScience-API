@@ -9,8 +9,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.aperturescience.infra.security.UserRole;
-import br.com.aperturescience.util.GeradorDeLogin;
-import br.com.aperturescience.util.GeradorDeSenha;
 import br.com.aperturescience.util.UserRoleConverter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
@@ -66,4 +64,5 @@ public class Funcionario implements UserDetails {
     public String getUsername() {
         return codigoLogin;
     }
+    
 }
