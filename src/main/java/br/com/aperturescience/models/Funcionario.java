@@ -1,17 +1,7 @@
 package br.com.aperturescience.models;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import br.com.aperturescience.infra.security.UserRole;
-import br.com.aperturescience.util.UserRoleConverter;
-import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
+import br.com.aperturescience.util.GeradorDeLogin;
+import br.com.aperturescience.util.GeradorDeSenha;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-public class Funcionario implements UserDetails {
+public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,34 +25,14 @@ public class Funcionario implements UserDetails {
     private String cpf;
     private String email;
     private String telefone;
-    @Convert(converter = UserRoleConverter.class)
-    @Column(name = "cargo", length = 50) 
-    private UserRole cargo;
+    private String cargo;
     private Integer nivelAcesso;
     private String senha;
     private String codigoLogin;
     
-    public Funcionario(String codigoLogin, String senha, UserRole cargo){
-        this.codigoLogin = codigoLogin;
-        this.senha = senha;
-        this.cargo = cargo;
+    @PrePersist
+    protected void onCreate(){
+        this.codigoLogin = GeradorDeLogin.gerarCodigoAleatorio();
+        this.senha = GeradorDeSenha.gerarSenha();
     }
-
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.cargo == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
-        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
-    }
-
-    @Override
-    public String getPassword() {
-        return senha;
-    }
-
-    @Override
-    public String getUsername() {
-        return codigoLogin;
-    }
-    
 }

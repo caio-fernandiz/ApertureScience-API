@@ -66,8 +66,6 @@ input {
     padding: 0 15px;
     font-family: 'AP2';
     letter-spacing: 1px;
-
-
 }
 
 .botaoLogar {
@@ -83,7 +81,7 @@ input {
     padding-top: 20px;
     padding-bottom: 30px;
     background: 
-    linear-gradient(to right, transparent 370px, #000 0%) bottom;
+        linear-gradient(to right, transparent 370px, #000 0%) bottom;
     background-size: 100% 5px; 
     background-position: 0px 173px;
     background-repeat: no-repeat;
@@ -189,8 +187,6 @@ input {
     height: 100%;
 }
 
-
-
 .lista-funcionarios,
 .lista-cobaias,
 .lista-testes {
@@ -237,16 +233,15 @@ input {
 
 .form-funcionario,
 .form-cobaia,
-.form-testes,
-.form-testes2 {
+.form-testes {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.form-testes2{
-    margin-right: 150px;
+.form-cobaia{
+    
 }
 
 .input-row {
@@ -255,51 +250,25 @@ input {
     width: 10px;
 }
 
-.input-groupF,
-.input-groupC,
-.input-groupT,
-.input-groupT2{
+.input-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.input-groupF label,
-.input-groupC label,
-.input-groupT label,
-.input-groupT2 label {
+.input-group label {
     font-weight: bold;
     font-size: 14px;
 }
 
-.input-groupC label{
-    margin-top: 10px;
+.form-inputF
+.form-inputC
+.form-inputT {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
-
-.form-txta {
-    width: 280px;   
-    resize: none;
-    border-radius: 8px;  /* Borda arredondada */
-    border: 2px solid #ccc;  /* Cor da borda (ajuste se necessário) */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);  /* Sombra suave */
-    padding: 10px;  /* Espaçamento interno */
-    outline: none;  /* Remove o contorno padrão ao focar */
-}
-
-.form-selectF, .form-selectC{
-    border-radius: 8px;  /* Borda arredondada */
-    border: 2px solid #ccc;  /* Cor da borda (ajuste se necessário) */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);  /* Sombra suave */
-    outline: none;
-}
-
-/* Adiciona efeito de foco */
-.form-txta:focus {
-    border-color: #999;  /* Muda a cor da borda ao focar */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);  /* Ajusta a sombra ao focar */
-}
-
-
 
 .botoes-principaisF,
 .botoes-confirmacaoF,
@@ -415,29 +384,6 @@ width: 100px;
 }
 
 #tipoSanguineoCobaias{
-    width: 135px;
-    height: 35px;
+    width: 100px;
 }
 
-#quantidadeTestes{
-    width: 110px;
-}
-
-#baixas{
-    width: 90px;
-}
-
-
-#descricaoTeste, 
-#anotacoes {
-    height: 150px;
-}
-
-#objetivoTeste{
-    height: 90px;
-}
-
-.highlight-border {
-    border: 2px solid black;
-
-}
