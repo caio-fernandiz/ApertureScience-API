@@ -1,5 +1,5 @@
 // Elementos do DOM
-const cobaiasList = document.getElementById('cobaiasList');
+const GuinneaPigsList = document.getElementById('GuinneaPigsList');
 const inputsC = document.querySelectorAll('.form-inputC');
 const btnCadastrarC = document.querySelector('.btn-cadastrarC');
 const btnEditarC = document.querySelector('.btn-editarC');
@@ -9,7 +9,7 @@ const btnCancelarC = document.querySelector('.btn-cancelarC');
 const botoesPrincipaisC = document.querySelector('.botoes-principaisC');
 const botoesConfirmacaoC = document.querySelector('.botoes-confirmacaoC');
 // Estado da aplicação
-let cobaiaSelecionada = null;
+let GuinneaPigSelecionada = null;
 let acaoAtualC = null; // 'cadastrar', 'editar' ou 'deletar'
 // Esconder botões de confirmação inicialmente
 botoesConfirmacaoC.style.display = 'none';
@@ -23,45 +23,45 @@ function habilitarinputsC() {
 }
 // Inicializar com inputsC desabilitados
 desabilitarinputsC();
-// Função para carregar cobaias
-async function carregarCobaias() {
+// Função para carregar GuinneaPigs
+async function carregarGuinneaPigs() {
     try {
-        const response = await fetch('http://localhost:8080/as/cobaias');
-        const cobaias = await response.json();
+        const response = await fetch('http://localhost:8080/as/GuinneaPigs');
+        const GuinneaPigs = await response.json();
         
-        cobaiasList.innerHTML = '';
-        cobaias.forEach(cobaia => {
+        GuinneaPigsList.innerHTML = '';
+        GuinneaPigs.forEach(GuinneaPig => {
             const div = document.createElement('div');
-            div.className = 'cobaia-item';
-            div.textContent = cobaia.nome;
-            div.addEventListener('click', () => selecionarCobaia(cobaia));
-            cobaiasList.appendChild(div);
+            div.classusername = 'GuinneaPig-item';
+            div.textContent = GuinneaPig.username;
+            div.addEventListener('click', () => selecionarGuinneaPig(GuinneaPig));
+            GuinneaPigsList.appendChild(div);
         });
     } catch (error) {
-        console.error('Erro ao carregar cobaias:', error);
+        console.error('Erro ao carregar GuinneaPigs:', error);
     }
 }
-// Função para selecionar cobaia
-function selecionarCobaia(cobaia) {
-    cobaiaSelecionada = cobaia;
-    // Preencher inputsC com dados da cobaia
-    document.getElementById('nomeCobaias').value = cobaia.nome;
-    document.getElementById('idadeCobaias').value = cobaia.idade;
-    document.getElementById('qiCobaias').value = cobaia.qi;
-    document.getElementById('cpfCobaias').value = cobaia.cpf;
-    document.getElementById('alturaCobaias').value = cobaia.altura;
-    document.getElementById('tipoSanguineoCobaias').value = cobaia.tipoSanguineo;
-    document.getElementById('formacaoAcademicaCobaias').value = cobaia.formacaoAcademica;
-    document.getElementById('resultadoTesteResistenciaCobaias').value = cobaia.resultadoTesteResistencia;
-    document.getElementById('resultadoTesteForcaCobaias').value = cobaia.resultadoTesteForca;
-    document.getElementById('resultadoTesteVelocidadeCobaias').value = cobaia.resultadoTesteVelocidade;
+// Função para selecionar GuinneaPig
+function selecionarGuinneaPig(GuinneaPig) {
+    GuinneaPigSelecionada = GuinneaPig;
+    // Preencher inputsC com dados da GuinneaPig
+    document.getElementById('usernameGuinneaPigs').value = GuinneaPig.username;
+    document.getElementById('ageGuinneaPigs').value = GuinneaPig.age;
+    document.getElementById('qiGuinneaPigs').value = GuinneaPig.qi;
+    document.getElementById('cpfGuinneaPigs').value = GuinneaPig.cpf;
+    document.getElementById('heightGuinneaPigs').value = GuinneaPig.height;
+    document.getElementById('bloodTypeGuinneaPigs').value = GuinneaPig.bloodType;
+    document.getElementById('academicBackgroundGuinneaPigs').value = GuinneaPig.academicBackground;
+    document.getElementById('resistanceTestResultGuinneaPigs').value = GuinneaPig.resistanceTestResult;
+    document.getElementById('forceTestResultGuinneaPigs').value = GuinneaPig.forceTestResult;
+    document.getElementById('speedTestResultGuinneaPigs').value = GuinneaPig.speedTestResult;
     // Manter inputsC desabilitados ao selecionar
     desabilitarinputsC();
 }
 // Função para limpar inputsC
 function limparinputsC() {
     inputsC.forEach(input => input.value = '');
-    cobaiaSelecionada = null;
+    GuinneaPigSelecionada = null;
 }
 // Função para mostrar/esconder botões
 function toggleBotoesC(mostrarConfirmacao) {
@@ -76,13 +76,13 @@ btnCadastrarC.addEventListener('click', () => {
     toggleBotoesC(true);
 });
 btnEditarC.addEventListener('click', () => {
-    if (!cobaiaSelecionada) return;
+    if (!GuinneaPigSelecionada) return;
     habilitarinputsC();
     acaoAtualC = 'editar';
     toggleBotoesC(true);
 });
 btnDeletarC.addEventListener('click', () => {
-    if (!cobaiaSelecionada) return;
+    if (!GuinneaPigSelecionada) return;
     acaoAtualC = 'deletar';
     toggleBotoesC(true);
 });
@@ -91,7 +91,7 @@ btnCancelarC.addEventListener('click', () => {
     if (acaoAtualC === 'cadastrar') {
         limparinputsC();
     } else if (acaoAtualC === 'editar') {
-        selecionarCobaia(cobaiaSelecionada);
+        selecionarGuinneaPig(GuinneaPigSelecionada);
     }
     desabilitarinputsC();
     toggleBotoesC(false);
@@ -99,25 +99,25 @@ btnCancelarC.addEventListener('click', () => {
 // Event Listener para botão confirmar
 btnConfirmarC.addEventListener('click', async () => {
     try {
-        let url = 'http://localhost:8080/as/cobaias';
+        let url = 'http://localhost:8080/as/GuinneaPigs';
         let method = 'POST';
         let body = {
-            nome: document.getElementById('nomeCobaias').value,
-            idade: parseInt(document.getElementById('idadeCobaias').value),
-            qi: parseInt(document.getElementById('qiCobaias').value),
-            cpf: document.getElementById('cpfCobaias').value,
-            altura: document.getElementById('alturaCobaias').value,
-            tipoSanguineo: document.getElementById('tipoSanguineoCobaias').value,
-            formacaoAcademica: document.getElementById('formacaoAcademicaCobaias').value,
-            resultadoTesteResistencia: parseInt(document.getElementById('resultadoTesteResistenciaCobaias').value),
-            resultadoTesteForca: parseInt(document.getElementById('resultadoTesteForcaCobaias').value),
-            resultadoTesteVelocidade: parseInt(document.getElementById('resultadoTesteVelocidadeCobaias').value)
+            username: document.getElementById('usernameGuinneaPigs').value,
+            age: parseInt(document.getElementById('ageGuinneaPigs').value),
+            qi: parseInt(document.getElementById('qiGuinneaPigs').value),
+            cpf: document.getElementById('cpfGuinneaPigs').value,
+            height: document.getElementById('heightGuinneaPigs').value,
+            bloodType: document.getElementById('bloodTypeGuinneaPigs').value,
+            academicBackground: document.getElementById('academicBackgroundGuinneaPigs').value,
+            resistanceTestResult: parseInt(document.getElementById('resistanceTestResultGuinneaPigs').value),
+            forceTestResult: parseInt(document.getElementById('forceTestResultGuinneaPigs').value),
+            speedTestResult: parseInt(document.getElementById('speedTestResultGuinneaPigs').value)
         };
         if (acaoAtualC === 'editar') {
-            url += `/${cobaiaSelecionada.id}`;
+            url += `/${GuinneaPigSelecionada.id}`;
             method = 'PUT';
         } else if (acaoAtualC === 'deletar') {
-            url += `/${cobaiaSelecionada.id}`;
+            url += `/${GuinneaPigSelecionada.id}`;
             method = 'DELETE';
             body = null;
         }
@@ -129,7 +129,7 @@ btnConfirmarC.addEventListener('click', async () => {
             body: body ? JSON.stringify(body) : null
         });
         if (response.ok) {
-            await carregarCobaias();
+            await carregarGuinneaPigs();
             limparinputsC();
             desabilitarinputsC();
             toggleBotoesC(false);
@@ -140,5 +140,5 @@ btnConfirmarC.addEventListener('click', async () => {
         console.error('Erro:', error);
     }
 });
-// Carregar cobaias ao iniciar
-carregarCobaias();
+// Carregar GuinneaPigs ao iniciar
+carregarGuinneaPigs();

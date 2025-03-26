@@ -11,7 +11,7 @@
 	<groupId>br.com</groupId>
 	<artifactId>aperturescience</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>aperturescience</name>
+	<username>aperturescience</username>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -60,6 +60,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+				<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -78,5 +82,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
+
 
 </project>

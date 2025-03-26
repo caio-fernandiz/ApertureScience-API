@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta username="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -13,30 +13,30 @@
 
     <div class="container">
         <nav class="opcoes">
-            <h2 class="levaParaFuncionarios active" onclick="showSlide(0)">Funcionários</h2>
-            <h2 class="levaParaCobaias" onclick="showSlide(1)">Cobaias</h2>
-            <h2 class="levaParaTestes" onclick="showSlide(2)">Testes</h2>
+            <h2 class="levaParaEmployees active" onclick="showSlide(0)">Funcionários</h2>
+            <h2 class="levaParaGuinneaPigs" onclick="showSlide(1)">GuinneaPigs</h2>
+            <h2 class="levaParaTests" onclick="showSlide(2)">Tests</h2>
         </nav>
 
         <div class="slider-container">
             <!-- Funcionários -->
-            <div class="slide funcionarios active">
-                <div class="funcionarios-container">
-                    <div class="lista-funcionarios">
+            <div class="slide Employees active">
+                <div class="Employees-container">
+                    <div class="lista-Employees">
                         <h3>Lista de Funcionários</h3>
-                        <div id="funcionariosList" class="funcionarios-list">
+                        <div id="EmployeesList" class="Employees-list">
                             <!-- Funcionários serão adicionados aqui dinamicamente -->
                         </div>
                     </div>
-                    <div class="form-funcionario">
+                    <div class="form-Employee">
                         <div class="input-row">
                             <div class="input-group">
-                                <label for="nome">Nome:</label>
-                                <input type="text" id="nome" class="form-inputF">
+                                <label for="username">username:</label>
+                                <input type="text" id="username" class="form-inputF">
                             </div>
                             <div class="input-group">
-                                <label for="idade">Idade:</label>
-                                <input type="number" id="idade" class="form-inputF">
+                                <label for="age">age:</label>
+                                <input type="number" id="age" class="form-inputF">
                             </div>
                         </div>
                         <div class="input-group">
@@ -48,12 +48,12 @@
                             <input type="email" id="email" class="form-inputF">
                         </div>
                         <div class="input-group">
-                            <label for="telefone">Telefone:</label>
-                            <input type="tel" id="telefone" class="form-inputF">
+                            <label for="telephone">telephone:</label>
+                            <input type="tel" id="telephone" class="form-inputF">
                         </div>
                         <div class="input-group">
-                            <label for="cargo">Cargo:</label>
-                            <select id="cargo" class="form-inputF">
+                            <label for="role">role:</label>
+                            <select id="role" class="form-inputF">
                                 <option value="Segurança">Segurança</option>
                                 <option value="Cientista">Cientista</option>
                                 <option value="Diretor">Diretor</option>
@@ -80,66 +80,66 @@
                 </div>
             </div>
 
-          <!-- Cobaias -->
-<div class="slide cobaias">
-    <div class="cobaias-container">
-        <div class="lista-cobaias">
-            <h3>Lista de Cobaias</h3>
-            <div id="cobaiasList" class="cobaias-list">
-                <!-- Cobaias serão adicionadas aqui dinamicamente -->
+          <!-- GuinneaPigs -->
+<div class="slide GuinneaPigs">
+    <div class="GuinneaPigs-container">
+        <div class="lista-GuinneaPigs">
+            <h3>Lista de GuinneaPigs</h3>
+            <div id="GuinneaPigsList" class="GuinneaPigs-list">
+                <!-- GuinneaPigs serão adicionadas aqui dinamicamente -->
             </div>
         </div>
-        <div class="form-cobaias">
+        <div class="form-GuinneaPigs">
             <div class="input-row">
                 <div class="input-group">
-                    <label for="nomeCobaias">Nome:</label>
-                    <input type="text" id="nomeCobaias" class="form-inputC">
+                    <label for="usernameGuinneaPigs">username:</label>
+                    <input type="text" id="usernameGuinneaPigs" class="form-inputC">
                 </div>
                 <div class="input-group">
-                    <label for="idadeCobaias">Idade:</label>
-                    <input type="number" id="idadeCobaias" class="form-inputC">
+                    <label for="ageGuinneaPigs">age:</label>
+                    <input type="number" id="ageGuinneaPigs" class="form-inputC">
                 </div>
                 <div class="input-group">
-                    <label for="qiCobaias">QI:</label>
-                    <input type="number" id="qiCobaias" class="form-inputC">
+                    <label for="qiGuinneaPigs">QI:</label>
+                    <input type="number" id="qiGuinneaPigs" class="form-inputC">
                 </div>
             </div>
             
             <div class="input-group">
-                <label for="cpfCobaias">CPF:</label>
-                <input type="text" id="cpfCobaias" class="form-inputC">
+                <label for="cpfGuinneaPigs">CPF:</label>
+                <input type="text" id="cpfGuinneaPigs" class="form-inputC">
             </div>
 
             <div class="input-row">
                 <div class="input-group">
-                    <label for="alturaCobaias">Altura:</label>
-                    <input type="text" id="alturaCobaias" class="form-inputC">
+                    <label for="heightGuinneaPigs">height:</label>
+                    <input type="text" id="heightGuinneaPigs" class="form-inputC">
                 </div>
                 <div class="input-group">
-                    <label for="tipoSanguineoCobaias">Tipo Sanguíneo:</label>
-                    <input type="text" id="tipoSanguineoCobaias" class="form-inputC">
+                    <label for="bloodTypeGuinneaPigs">Tipo Sanguíneo:</label>
+                    <input type="text" id="bloodTypeGuinneaPigs" class="form-inputC">
                 </div>
                
             </div>
 
             <div class="input-group">
-                <label for="formacaoAcademicaCobaias">Formação Acadêmica:</label>
-                <input type="text" id="formacaoAcademicaCobaias" class="form-inputC">
+                <label for="academicBackgroundGuinneaPigs">Formação Acadêmica:</label>
+                <input type="text" id="academicBackgroundGuinneaPigs" class="form-inputC">
             </div>
 
             <div class="input-group">
-                <label for="resultadoTesteResistenciaCobaias">Resultado Teste de Resistência:</label>
-                <input type="number" id="resultadoTesteResistenciaCobaias" class="form-inputC">
+                <label for="resistanceTestResultGuinneaPigs">Resultado Test de Resistência:</label>
+                <input type="number" id="resistanceTestResultGuinneaPigs" class="form-inputC">
             </div>
 
             <div class="input-group">
-                <label for="resultadoTesteForcaCobaias">Resultado Teste de Força:</label>
-                <input type="number" id="resultadoTesteForcaCobaias" class="form-inputC">
+                <label for="forceTestResultGuinneaPigs">Resultado Test de Força:</label>
+                <input type="number" id="forceTestResultGuinneaPigs" class="form-inputC">
             </div>
 
             <div class="input-group">
-                <label for="resultadoTesteVelocidadeCobaias">Resultado Teste de Velocidade:</label>
-                <input type="number" id="resultadoTesteVelocidadeCobaias" class="form-inputC">
+                <label for="speedTestResultGuinneaPigs">Resultado Test de Velocage:</label>
+                <input type="number" id="speedTestResultGuinneaPigs" class="form-inputC">
             </div>
 
             <div class="botoes-principaisC">
@@ -154,55 +154,55 @@
         </div>
     </div>
 </div>
-             <!-- Testes -->
-             <div class="slide testes">
-                <div class="testes-container">
-                    <div class="lista-testes">
-                        <h3>Lista de Testes</h3>
-                        <div id="testesList" class="testes-list">
-                            <!-- Testes serão adicionados aqui dinamicamente -->
+             <!-- Tests -->
+             <div class="slide Tests">
+                <div class="Tests-container">
+                    <div class="lista-Tests">
+                        <h3>Lista de Tests</h3>
+                        <div id="TestsList" class="Tests-list">
+                            <!-- Tests serão adicionados aqui dinamicamente -->
                         </div>
                     </div>
-                    <div class="form-testes">
+                    <div class="form-Tests">
                         <div class="input-group">
-                            <label for="camaraAtual">Câmara Atual:</label>
-                            <input type="text" id="camaraAtual" class="form-inputT">
+                            <label for="currentChamber">Câmara Atual:</label>
+                            <input type="text" id="currentChamber" class="form-inputT">
                         </div>
 
                         <div class="input-group">
-                            <label for="titulo">Título:</label>
-                            <input type="text" id="titulo" class="form-inputT">
+                            <label for="title">Título:</label>
+                            <input type="text" id="title" class="form-inputT">
                         </div>
 
                         <div class="input-group">
-                            <label for="objetivoTeste">Objetivo do Teste:</label>
-                            <input id="objetivoTeste" class="form-inputT">
+                            <label for="testObjective">Objetivo do Test:</label>
+                            <input id="testObjective" class="form-inputT">
                         </div>
 
                         <div class="input-group">
-                            <label for="descricaoTeste">Descrição do Teste:</label>
-                            <input id="descricaoTeste" class="form-inputT">
+                            <label for="testDescription">Descrição do Test:</label>
+                            <input id="testDescription" class="form-inputT">
                         </div>
 
                         <div class="input-group">
-                            <label for="anotacoes">Anotações:</label>
-                            <input id="anotacoes" class="form-inputT">
+                            <label for="notes">Anotações:</label>
+                            <input id="notes" class="form-inputT">
                         </div>
 
                         <div class="input-row">
                             <div class="input-group">
-                                <label for="quantidadeTestes">Quantidade de Testes:</label>
-                                <input type="number" id="quantidadeTestes" class="form-inputT">
+                                <label for="testQuantity">Quantage de Tests:</label>
+                                <input type="number" id="testQuantity" class="form-inputT">
                             </div>
                             <div class="input-group">
-                                <label for="baixas">Baixas:</label>
-                                <input type="number" id="baixas" class="form-inputT">
+                                <label for="downs">downs:</label>
+                                <input type="number" id="downs" class="form-inputT">
                             </div>
                         </div>
 
                         <div class="input-group">
-                            <label for="resultadoAtual">Resultado Atual:</label>
-                            <input id="resultadoAtual" class="form-inputT">
+                            <label for="currentResult">Resultado Atual:</label>
+                            <input id="currentResult" class="form-inputT">
                         </div>
 
                         <div class="botoes-principaisT">
@@ -224,9 +224,9 @@
     </div>
 
     <script src="script.js"></script>
-    <script src="funcionarios.js"></script>
-    <script src="cobaias.js"></script>
-    <script src="testes.js"></script>
+    <script src="Employees.js"></script>
+    <script src="GuinneaPigs.js"></script>
+    <script src="Tests.js"></script>
     
 </body>
 </html>
