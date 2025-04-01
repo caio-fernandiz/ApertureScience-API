@@ -33,7 +33,7 @@ async function carregarCobaias() {
         cobaias.forEach(cobaia => {
             const div = document.createElement('div');
             div.className = 'cobaia-item';
-            div.textContent = cobaia.nome;
+            div.textContent = cobaia.name; // Corrigir de cobaia.nome para cobaia.name
             div.addEventListener('click', () => selecionarCobaia(cobaia));
             cobaiasList.appendChild(div);
         });
@@ -54,7 +54,7 @@ function selecionarCobaia(cobaia) {
     document.getElementById('formacaoAcademicaCobaias').value = cobaia.academicBackground;
     document.getElementById('resultadoTesteResistenciaCobaias').value = cobaia.resistanceTestResult;
     document.getElementById('resultadoTesteForcaCobaias').value = cobaia.strengthTestResult;
-    document.getElementById('resultadoTesteVelocidadeCobaias').value = cobaia.speedRestResult;
+    document.getElementById('resultadoTesteVelocidadeCobaias').value = cobaia.speedTestResult; // Corrigir de speedRestResult para speedTestResult
     // Manter inputsC desabilitados ao selecionar
     desabilitarinputsC();
 }
@@ -99,7 +99,7 @@ btnCancelarC.addEventListener('click', () => {
 // Event Listener para botão confirmar
 btnConfirmarC.addEventListener('click', async () => {
     try {
-        let url = 'http://localhost:8080/as/cobaias';
+        let url = 'http://localhost:8080/as/guineaPigs';
         let method = 'POST';
         let body = {
             name: document.getElementById('nomeCobaias').value,
@@ -111,7 +111,7 @@ btnConfirmarC.addEventListener('click', async () => {
             academicBackground: document.getElementById('formacaoAcademicaCobaias').value,
             resistanceTestResult: parseInt(document.getElementById('resultadoTesteResistenciaCobaias').value),
             strengthTestResult: parseInt(document.getElementById('resultadoTesteForcaCobaias').value),
-            speedRestResult: parseInt(document.getElementById('resultadoTesteVelocidadeCobaias').value)
+            speedTestResult: parseInt(document.getElementById('resultadoTesteVelocidadeCobaias').value)
         };
         if (acaoAtualC === 'editar') {
             url += `/${cobaiaSelecionada.id}`;
@@ -128,14 +128,16 @@ btnConfirmarC.addEventListener('click', async () => {
             } : {},
             body: body ? JSON.stringify(body) : null
         });
-        if (response.ok) {
-            await carregarCobaias();
-            limparinputsC();
-            desabilitarinputsC();
-            toggleBotoesC(false);
-        } else {
-            throw new Error('Erro na operação');
+        if (!response.ok) {
+            const errorMessage = await response.text();
+            console.error('Erro na operação:', errorMessage);
+            alert(`Erro na operação: ${errorMessage}`);
+            return;
         }
+        await carregarCobaias();
+        limparinputsC();
+        desabilitarinputsC();
+        toggleBotoesC(false);
     } catch (error) {
         console.error('Erro:', error);
     }

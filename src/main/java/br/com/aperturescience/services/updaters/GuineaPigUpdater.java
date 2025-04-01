@@ -25,8 +25,8 @@ public class GuineaPigUpdater {
             guineaPig.setResistanceTestResult(form.resistanceTestResult());
         if (form.strengthTestResult() != null)
             guineaPig.setStrengthTestResult(form.strengthTestResult());
-        if (form.speedRestResult() != null)
-            guineaPig.setSpeedRestResult(form.speedRestResult());
+        if (form.speedTestResult() != null)
+            guineaPig.setSpeedTestResult(form.speedTestResult());
         if (form.academicBackground() != null)
             guineaPig.setAcademicBackground(form.academicBackground());
     }

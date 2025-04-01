@@ -25,6 +25,6 @@ public class GuineaPig {
     private Integer qi;
     private Integer resistanceTestResult;
     private Integer strengthTestResult;
-    private Integer speedRestResult;
+    private Integer speedTestResult;
     private String academicBackground;
 }
