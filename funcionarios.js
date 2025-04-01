@@ -1,4 +1,4 @@
-// Elementos do DOM
+z// Elementos do DOM
 const funcionariosList = document.getElementById('funcionariosList');
 const inputsF = document.querySelectorAll('.form-inputF');
 const btnCadastrarF = document.querySelector('.btn-cadastrarF');

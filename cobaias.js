@@ -26,7 +26,7 @@ desabilitarinputsC();
 // Função para carregar cobaias
 async function carregarCobaias() {
     try {
-        const response = await fetch('http://localhost:8080/as/cobaias');
+        const response = await fetch('http://localhost:8080/as/guineaPigs');
         const cobaias = await response.json();
         
         cobaiasList.innerHTML = '';
@@ -45,16 +45,16 @@ async function carregarCobaias() {
 function selecionarCobaia(cobaia) {
     cobaiaSelecionada = cobaia;
     // Preencher inputsC com dados da cobaia
-    document.getElementById('nomeCobaias').value = cobaia.nome;
-    document.getElementById('idadeCobaias').value = cobaia.idade;
+    document.getElementById('nomeCobaias').value = cobaia.name;
+    document.getElementById('idadeCobaias').value = cobaia.age;
     document.getElementById('qiCobaias').value = cobaia.qi;
     document.getElementById('cpfCobaias').value = cobaia.cpf;
-    document.getElementById('alturaCobaias').value = cobaia.altura;
-    document.getElementById('tipoSanguineoCobaias').value = cobaia.tipoSanguineo;
-    document.getElementById('formacaoAcademicaCobaias').value = cobaia.formacaoAcademica;
-    document.getElementById('resultadoTesteResistenciaCobaias').value = cobaia.resultadoTesteResistencia;
-    document.getElementById('resultadoTesteForcaCobaias').value = cobaia.resultadoTesteForca;
-    document.getElementById('resultadoTesteVelocidadeCobaias').value = cobaia.resultadoTesteVelocidade;
+    document.getElementById('alturaCobaias').value = cobaia.height;
+    document.getElementById('tipoSanguineoCobaias').value = cobaia.bloodType;
+    document.getElementById('formacaoAcademicaCobaias').value = cobaia.academicBackground;
+    document.getElementById('resultadoTesteResistenciaCobaias').value = cobaia.resistanceTestResult;
+    document.getElementById('resultadoTesteForcaCobaias').value = cobaia.strengthTestResult;
+    document.getElementById('resultadoTesteVelocidadeCobaias').value = cobaia.speedRestResult;
     // Manter inputsC desabilitados ao selecionar
     desabilitarinputsC();
 }
@@ -102,16 +102,16 @@ btnConfirmarC.addEventListener('click', async () => {
         let url = 'http://localhost:8080/as/cobaias';
         let method = 'POST';
         let body = {
-            nome: document.getElementById('nomeCobaias').value,
-            idade: parseInt(document.getElementById('idadeCobaias').value),
+            name: document.getElementById('nomeCobaias').value,
+            age: parseInt(document.getElementById('idadeCobaias').value),
             qi: parseInt(document.getElementById('qiCobaias').value),
             cpf: document.getElementById('cpfCobaias').value,
-            altura: document.getElementById('alturaCobaias').value,
-            tipoSanguineo: document.getElementById('tipoSanguineoCobaias').value,
-            formacaoAcademica: document.getElementById('formacaoAcademicaCobaias').value,
-            resultadoTesteResistencia: parseInt(document.getElementById('resultadoTesteResistenciaCobaias').value),
-            resultadoTesteForca: parseInt(document.getElementById('resultadoTesteForcaCobaias').value),
-            resultadoTesteVelocidade: parseInt(document.getElementById('resultadoTesteVelocidadeCobaias').value)
+            height: document.getElementById('alturaCobaias').value,
+            bloodType: document.getElementById('tipoSanguineoCobaias').value,
+            academicBackground: document.getElementById('formacaoAcademicaCobaias').value,
+            resistanceTestResult: parseInt(document.getElementById('resultadoTesteResistenciaCobaias').value),
+            strengthTestResult: parseInt(document.getElementById('resultadoTesteForcaCobaias').value),
+            speedRestResult: parseInt(document.getElementById('resultadoTesteVelocidadeCobaias').value)
         };
         if (acaoAtualC === 'editar') {
             url += `/${cobaiaSelecionada.id}`;
