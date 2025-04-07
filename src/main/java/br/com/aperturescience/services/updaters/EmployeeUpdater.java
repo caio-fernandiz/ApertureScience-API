@@ -17,8 +17,8 @@ public class EmployeeUpdater {
             employee.setCpf(form.cpf());
         if (form.email() != null)
             employee.setEmail(form.email());
-        if (form.telefone() != null)
-            employee.setTelefone(form.telefone());
+        if (form.telephone() != null)
+            employee.setTelephone(form.telephone());
         if (form.role() != null)
             employee.setRole(form.role());
         if (form.accessLevel() != null)

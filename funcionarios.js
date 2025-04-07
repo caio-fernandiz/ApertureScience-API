@@ -1,4 +1,4 @@
-z// Elementos do DOM
+// Elementos do DOM
 const funcionariosList = document.getElementById('funcionariosList');
 const inputsF = document.querySelectorAll('.form-inputF');
 const btnCadastrarF = document.querySelector('.btn-cadastrarF');
@@ -32,14 +32,14 @@ desabilitarinputsF();
 // Função para carregar funcionários
 async function carregarFuncionarios() {
     try {
-        const response = await fetch('http://localhost:8080/as/funcionarios');
+        const response = await fetch('http://localhost:8080/as/employees');
         const funcionarios = await response.json();
         
         funcionariosList.innerHTML = '';
         funcionarios.forEach(funcionario => {
             const div = document.createElement('div');
             div.className = 'funcionario-item';
-            div.textContent = funcionario.nome;
+            div.textContent = funcionario.name;
             div.addEventListener('click', () => selecionarFuncionario(funcionario));
             funcionariosList.appendChild(div);
         });
@@ -52,13 +52,13 @@ async function carregarFuncionarios() {
 function selecionarFuncionario(funcionario) {
     funcionarioSelecionado = funcionario;
     // Preencher inputsF com dados do funcionário
-    document.getElementById('nome').value = funcionario.nome;
-    document.getElementById('idade').value = funcionario.idade;
+    document.getElementById('nome').value = funcionario.name;
+    document.getElementById('idade').value = funcionario.age;
     document.getElementById('cpf').value = funcionario.cpf;
     document.getElementById('email').value = funcionario.email;
-    document.getElementById('telefone').value = funcionario.telefone;
-    document.getElementById('cargo').value = funcionario.cargo;
-    document.getElementById('acesso').value = funcionario.nivelAcesso;
+    document.getElementById('telefone').value = funcionario.telephone;
+    document.getElementById('cargo').value = funcionario.role;
+    document.getElementById('acesso').value = funcionario.accessLevel;
     // Manter inputsF desabilitados ao selecionar
     desabilitarinputsF();
 }
@@ -110,16 +110,16 @@ btnCancelarF.addEventListener('click', () => {
 // Event Listener para botão confirmar
 btnConfirmarF.addEventListener('click', async () => {
     try {
-        let url = 'http://localhost:8080/as/funcionarios';
+        let url = 'http://localhost:8080/as/employees';
         let method = 'POST';
         let body = {
-            nome: document.getElementById('nome').value,
-            idade: parseInt(document.getElementById('idade').value),
+            name: document.getElementById('nome').value,
+            age: parseInt(document.getElementById('idade').value),
             cpf: document.getElementById('cpf').value,
             email: document.getElementById('email').value,
-            telefone: document.getElementById('telefone').value,
-            cargo: document.getElementById('cargo').value,
-            nivelAcesso: parseInt(document.getElementById('acesso').value)
+            telephone: document.getElementById('telefone').value,
+            role: document.getElementById('cargo').value,
+            accessLevel: parseInt(document.getElementById('acesso').value)
         };
 
         if (acaoAtualF === 'editar') {

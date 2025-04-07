@@ -24,7 +24,7 @@ public class Employee {
     private Integer age;
     private String cpf;
     private String email;
-    private String telefone;
+    private String telephone;
     private String role;
     private Integer accessLevel;
     private String psswrd;

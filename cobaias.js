@@ -54,7 +54,7 @@ function selecionarCobaia(cobaia) {
     document.getElementById('formacaoAcademicaCobaias').value = cobaia.academicBackground;
     document.getElementById('resultadoTesteResistenciaCobaias').value = cobaia.resistanceTestResult;
     document.getElementById('resultadoTesteForcaCobaias').value = cobaia.strengthTestResult;
-    document.getElementById('resultadoTesteVelocidadeCobaias').value = cobaia.speedTestResult; // Corrigir de speedRestResult para speedTestResult
+    document.getElementById('resultadoTesteVelocidadeCobaias').value = cobaia.speedTestResult; 
     // Manter inputsC desabilitados ao selecionar
     desabilitarinputsC();
 }
