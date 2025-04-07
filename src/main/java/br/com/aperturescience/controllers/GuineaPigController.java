@@ -23,7 +23,7 @@ import br.com.aperturescience.services.interfaces.GuineaPigService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/as/guineaPigs")
+@RequestMapping("/as/guineapigs")
 public class GuineaPigController {
 
     private final GuineaPigService guineaPigService;

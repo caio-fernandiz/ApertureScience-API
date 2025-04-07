@@ -26,7 +26,7 @@ desabilitarinputsC();
 // Função para carregar cobaias
 async function carregarCobaias() {
     try {
-        const response = await fetch('http://localhost:8080/as/guineaPigs');
+        const response = await fetch('http://localhost:8080/as/guineapigs');
         const cobaias = await response.json();
         
         cobaiasList.innerHTML = '';
@@ -99,7 +99,7 @@ btnCancelarC.addEventListener('click', () => {
 // Event Listener para botão confirmar
 btnConfirmarC.addEventListener('click', async () => {
     try {
-        let url = 'http://localhost:8080/as/guineaPigs';
+        let url = 'http://localhost:8080/as/guineapigs';
         let method = 'POST';
         let body = {
             name: document.getElementById('nomeCobaias').value,

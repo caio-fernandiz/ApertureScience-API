@@ -1,5 +1,5 @@
 // Elementos do DOM
-const testsList = document.getElementById('testsList');
+const testesList = document.getElementById('testesList');
 const inputsT = document.querySelectorAll('.form-inputT');
 const btnCadastrarT = document.querySelector('.btn-cadastrarT');
 const btnEditarT = document.querySelector('.btn-editarT');
@@ -9,7 +9,7 @@ const botoesPrincipaisT = document.querySelector('.botoes-principaisT');
 const botoesConfirmacaoT = document.querySelector('.botoes-confirmacaoT');
 
 // Estado da aplicação
-let testSelecionado = null;
+let testeSelecionado = null;
 let acaoAtualT = null; // 'cadastrar' ou 'editar'
 
 // Esconder botões de confirmação inicialmente
@@ -28,37 +28,37 @@ function habilitarInputs() {
 // Inicializar com inputsT desabilitados
 desabilitarInputs();
 
-// Função para carregar tests
+// Função para carregar testes
 async function carregarTestes() {
     try {
         const response = await fetch('http://localhost:8080/as/tests');
-        const tests = await response.json();
+        const testes = await response.json();
         
-        testsList.innerHTML = '';
-        tests.forEach(test => {
+        testesList.innerHTML = '';
+        testes.forEach(teste => {
             const div = document.createElement('div');
-            div.className = 'test-item';
-            div.textContent = test.titulo;
-            div.addEventListener('click', () => selecionarTeste(test));
-            testsList.appendChild(div);
+            div.className = 'teste-item';
+            div.textContent = teste.title;
+            div.addEventListener('click', () => selecionarTeste(teste));
+            testesList.appendChild(div);
         });
     } catch (error) {
-        console.error('Erro ao carregar tests:', error);
+        console.error('Erro ao carregar testes:', error);
     }
 }
 
-// Função para selecionar test
-function selecionarTeste(test) {
-    testSelecionado = test;
-    // Preencher inputsT com dados do test
-    document.getElementById('camaraAtual').value = test.camaraAtual;
-document.getElementById('titulo').value = test.titulo;
-document.getElementById('objetivoTeste').value = test.objetivoTeste;
-document.getElementById('descricaoTeste').value = test.descricaoTeste;
-document.getElementById('anotacoes').value = test.anotacoes;
-document.getElementById('quantidadeTestes').value = test.quantidadeTestes;
-document.getElementById('baixas').value = test.baixas;
-document.getElementById('resultadoAtual').value = test.resultadoAtual;
+// Função para selecionar teste
+function selecionarTeste(teste) {
+    testeSelecionado = teste;
+    // Preencher inputsT com dados do teste
+    document.getElementById('camaraAtual').value = teste.currentChamber;
+document.getElementById('titulo').value = teste.title;
+document.getElementById('objetivoTeste').value = teste.testObjective;
+document.getElementById('descricaoTeste').value = teste.testDescription;
+document.getElementById('anotacoes').value = teste.notes;
+document.getElementById('quantidadeTestes').value = teste.testQuantitys;
+document.getElementById('baixas').value = teste.casualties;
+document.getElementById('resultadoAtual').value = teste.currentResult;
 
     // Manter inputsT desabilitados ao selecionar
     desabilitarInputs();
@@ -67,7 +67,7 @@ document.getElementById('resultadoAtual').value = test.resultadoAtual;
 // Função para limpar inputsT
 function limparInputs() {
     inputsT.forEach(input => input.value = '');
-    testSelecionado = null;
+    testeSelecionado = null;
 }
 
 // Função para mostrar/esconder botões
@@ -85,7 +85,7 @@ btnCadastrarT.addEventListener('click', () => {
 });
 
 btnEditarT.addEventListener('click', () => {
-    if (!testSelecionado) return;
+    if (!testeSelecionado) return;
     habilitarInputs();
     acaoAtualT = 'editar';
     toggleBotoesT(true);
@@ -96,7 +96,7 @@ btnCancelarT.addEventListener('click', () => {
     if (acaoAtualT === 'cadastrar') {
         limparInputs();
     } else if (acaoAtualT === 'editar') {
-        selecionarTeste(testSelecionado);
+        selecionarTeste(testeSelecionado);
     }
     desabilitarInputs();
     toggleBotoesT(false);
@@ -105,21 +105,21 @@ btnCancelarT.addEventListener('click', () => {
 // Event Listener para botão confirmar
 btnConfirmarT.addEventListener('click', async () => {
     try {
-        let url = 'http://localhost:8080/as/tests';
+        let url = 'http://localhost:8080/as/testes';
         let method = 'POST';
         let body = {
-            camaraAtual: document.getElementById('camaraAtual').value, 
-            titulo: document.getElementById('titulo').value, 
-            objetivoTeste: document.getElementById('objetivoTeste').value, 
-            descricaoTeste: document.getElementById('descricaoTeste').value,
-             anotacoes: document.getElementById('anotacoes').value, 
-             quantidadeTestes: parseInt(document.getElementById('quantidadeTestes').value), 
-             resultadoAtual: document.getElementById('resultadoAtual').value, 
-             baixas: parseInt(document.getElementById('baixas').value)
+            currentChamber: document.getElementById('camaraAtual').value, 
+            title: document.getElementById('titulo').value, 
+            testObjective: document.getElementById('objetivoTeste').value, 
+            testDescription: document.getElementById('descricaoTeste').value,
+            notes: document.getElementById('anotacoes').value, 
+            testQuantitys: parseInt(document.getElementById('quantidadeTestes').value), 
+            currentResult: document.getElementById('resultadoAtual').value, 
+            casualties: parseInt(document.getElementById('baixas').value)
         };
 
         if (acaoAtualT === 'editar') {
-            url += `/${testSelecionado.id}`;
+            url += `/${testeSelecionado.id}`;
             method = 'PUT';
         }
 
@@ -144,5 +144,5 @@ btnConfirmarT.addEventListener('click', async () => {
     }
 });
 
-// Carregar tests ao iniciar
+// Carregar testes ao iniciar
 carregarTestes();

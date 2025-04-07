@@ -22,7 +22,7 @@ import br.com.aperturescience.services.interfaces.TestService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/as/Tests")
+@RequestMapping("/as/tests")
 public class TestController {
 
     private final TestService TestService;
