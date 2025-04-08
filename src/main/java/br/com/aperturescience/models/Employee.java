@@ -1,5 +1,13 @@
 package br.com.aperturescience.models;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import br.com.aperturescience.infra.UserRole;
 import br.com.aperturescience.util.GeradorDeLogin;
 import br.com.aperturescience.util.GeradorDepsswrd;
 import jakarta.persistence.Entity;
@@ -15,7 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-public class Employee {
+public class Employee implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,14 +33,25 @@ public class Employee {
     private String cpf;
     private String email;
     private String telephone;
-    private String role;
+    private UserRole role;
     private Integer accessLevel;
     private String psswrd;
     private String loginCode;
-    
-    @PrePersist
-    protected void onCreate(){
-        this.loginCode = GeradorDeLogin.gerarCodigoAleatorio();
-        this.psswrd = GeradorDepsswrd.gerarpsswrd();
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.role == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("ROLE_DIRETOR"), new SimpleGrantedAuthority("ROLE_CIENTISTA"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_CIENTISTA"));   
+    }
+
+    @Override
+    public String getPassword() { 
+        return psswrd;
+    }
+
+    @Override
+    public String getUsername() {
+            return loginCode;
+        
     }
 }
