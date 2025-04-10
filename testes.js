@@ -105,7 +105,7 @@ btnCancelarT.addEventListener('click', () => {
 // Event Listener para botão confirmar
 btnConfirmarT.addEventListener('click', async () => {
     try {
-        let url = 'http://localhost:8080/as/testes';
+        let url = 'http://localhost:8080/as/tests';
         let method = 'POST';
         let body = {
             currentChamber: document.getElementById('camaraAtual').value, 
