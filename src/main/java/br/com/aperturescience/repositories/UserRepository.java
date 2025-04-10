@@ -6,5 +6,5 @@ import org.springframework.security.core.userdetails.UserDetails;
 import br.com.aperturescience.models.Employee;
 
 public interface UserRepository extends JpaRepository<Employee, Long>{
-UserDetails findByLogin(String loginCode);
+UserDetails findByLoginCode(String loginCode);
 }
