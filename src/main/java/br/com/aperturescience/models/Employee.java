@@ -3,6 +3,7 @@ package br.com.aperturescience.models;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,20 +36,28 @@ public class Employee implements UserDetails {
     private String psswrd;
     private String loginCode;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("ROLE_DIRETOR"), new SimpleGrantedAuthority("ROLE_CIENTISTA"));
-        else return List.of(new SimpleGrantedAuthority("ROLE_CIENTISTA"));   
+    public Employee(String loginCode, String psswrd, UserRole role) {
+        this.loginCode = loginCode;
+        this.psswrd = psswrd;
+        this.role = role;
     }
 
     @Override
-    public String getPassword() { 
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (this.role == UserRole.DIRETOR)
+            return List.of(new SimpleGrantedAuthority("ROLE_DIRETOR"), new SimpleGrantedAuthority("ROLE_CIENTISTA"));
+        else
+            return List.of(new SimpleGrantedAuthority("ROLE_CIENTISTA"));
+    }
+
+    @Override
+    public String getPassword() {
         return psswrd;
     }
 
     @Override
     public String getUsername() {
-            return loginCode;
-        
+        return loginCode;
+
     }
 }

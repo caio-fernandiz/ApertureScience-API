@@ -1,0 +1,51 @@
+package br.com.aperturescience.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.aperturescience.infra.AuthenticantionDTO;
+import br.com.aperturescience.infra.RegisterDTO;
+import br.com.aperturescience.models.Employee;
+import br.com.aperturescience.repositories.UserRepository;
+
+@RestController
+@RequestMapping("/as/auth")
+public class AuthenticationController {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody @Valid AuthenticantionDTO data) {
+        var usernamePassword = new UsernamePasswordAuthenticationToken(data.loginCode(), data.psswrd());
+        var auth = this.authenticationManager.authenticate(usernamePassword);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity register(@RequestBody @Valid RegisterDTO data) {
+        if (this.userRepository.findByLoginCode(data.loginCode()) != null)
+            return ResponseEntity.badRequest().build();
+
+            String encryptedPassword = new BCryptPasswordEncoder().encode(data.psswrd());
+            Employee newEmployee = new Employee(data.loginCode(), encryptedPassword, data.role());
+
+            this.userRepository.save(newEmployee);
+
+            return ResponseEntity.ok().build();
+    }
+
+}
