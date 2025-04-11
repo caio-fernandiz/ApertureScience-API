@@ -1,4 +1,4 @@
-package br.com.aperturescience.controllers;
+package br.com.aperturescience.infra;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.aperturescience.infra.AuthenticantionDTO;
-import br.com.aperturescience.infra.RegisterDTO;
 import br.com.aperturescience.models.Employee;
 import br.com.aperturescience.repositories.UserRepository;
 

@@ -1,4 +1,4 @@
-package br.com.aperturescience.infra;
+package br.com.aperturescience.infra.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

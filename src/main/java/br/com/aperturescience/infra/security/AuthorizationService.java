@@ -1,4 +1,4 @@
-package br.com.aperturescience.services.impls;
+package br.com.aperturescience.infra.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.aperturescience.repositories.UserRepository;
 
 @Service
-public class AuthorizationServiceImpl implements UserDetailsService {
+public class AuthorizationService implements UserDetailsService {
     @Autowired
     UserRepository repository;
     @Override
