@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import br.com.aperturescience.infra.user.UserRole;
 import br.com.aperturescience.util.GeradorDeLogin;
 import br.com.aperturescience.util.GeradorDepsswrd;
 import jakarta.persistence.Entity;
@@ -30,7 +31,7 @@ public class Employee implements UserDetails{
     private String cpf;
     private String email;
     private String telephone;
-    private String role;
+    private UserRole role;
     private Integer accessLevel;
     private String psswrd;
     private String loginCode;
