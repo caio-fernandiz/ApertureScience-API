@@ -1,5 +1,5 @@
 package br.com.aperturescience.infra;
 
-public record AuthenticationDTO() {
+public record AuthenticationDTO(String loginCode, String psswrd) {
 
 }
