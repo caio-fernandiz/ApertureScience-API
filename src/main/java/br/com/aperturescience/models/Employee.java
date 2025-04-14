@@ -1,5 +1,10 @@
 package br.com.aperturescience.models;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import br.com.aperturescience.util.GeradorDeLogin;
 import br.com.aperturescience.util.GeradorDepsswrd;
 import jakarta.persistence.Entity;
@@ -15,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-public class Employee {
+public class Employee implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,10 +34,19 @@ public class Employee {
     private Integer accessLevel;
     private String psswrd;
     private String loginCode;
-    
-    @PrePersist
-    protected void onCreate(){
-        this.loginCode = GeradorDeLogin.gerarCodigoAleatorio();
-        this.psswrd = GeradorDepsswrd.gerarpsswrd();
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return psswrd;
+    }
+
+    @Override
+    public String getUsername() {
+        return loginCode;
     }
 }
