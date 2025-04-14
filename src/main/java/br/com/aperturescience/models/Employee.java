@@ -1,8 +1,10 @@
 package br.com.aperturescience.models;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.aperturescience.infra.user.UserRole;
@@ -38,7 +40,8 @@ public class Employee implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        if(this.role == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("DIRETOR"), new SimpleGrantedAuthority("CIENTISTA"));
+        else return List.of(new SimpleGrantedAuthority("CIENTISTA"));
     }
 
     @Override
