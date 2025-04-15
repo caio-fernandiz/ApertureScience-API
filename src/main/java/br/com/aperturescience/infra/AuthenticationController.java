@@ -29,4 +29,9 @@ public class AuthenticationController {
 
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping("/register")
+    public ResponseEntity register(@RequestBody @Valid RegisterDTO data){
+
+    }
 }
