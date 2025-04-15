@@ -40,8 +40,8 @@ public class Employee implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("DIRETOR"), new SimpleGrantedAuthority("CIENTISTA"));
-        else return List.of(new SimpleGrantedAuthority("CIENTISTA"));
+        if(this.role == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("ROLE_DIRETOR"), new SimpleGrantedAuthority("CIENTISTA"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_CIENTISTA"));
     }
 
     @Override
