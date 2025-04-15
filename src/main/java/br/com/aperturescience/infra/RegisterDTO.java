@@ -1,5 +1,7 @@
 package br.com.aperturescience.infra;
 
-public record RegisterDTO(String loginCode, String psswrd, String role) {
+import br.com.aperturescience.infra.user.UserRole;
+
+public record RegisterDTO(String loginCode, String psswrd, UserRole role) {
 
 }

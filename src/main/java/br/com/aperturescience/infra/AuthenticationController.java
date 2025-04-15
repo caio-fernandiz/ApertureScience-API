@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.aperturescience.models.Employee;
 import jakarta.validation.Valid;
 
 @RestController
@@ -36,6 +37,9 @@ public class AuthenticationController {
         if(this.repository.findByLoginCode(data.loginCode()) !=null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.psswrd());
-        User newUser = new User(data.loginCode(), encryptedPassword, data.role());
+        Employee newEmployee = new Employee(data.loginCode(), encryptedPassword, data.role());
+
+        this.repository.save(newEmployee);
+        return ResponseEntity.ok().build();
     }
 }
