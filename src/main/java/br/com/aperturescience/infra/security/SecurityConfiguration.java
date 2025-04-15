@@ -1,7 +1,5 @@
 package br.com.aperturescience.infra.security;
 
-import java.net.PasswordAuthentication;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,11 +11,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
+    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity
@@ -39,6 +37,5 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    @PostMapping("/register")
-    
+ 
 }
