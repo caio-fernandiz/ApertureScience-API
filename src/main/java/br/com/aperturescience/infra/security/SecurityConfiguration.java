@@ -22,6 +22,8 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.POST, "/as/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/as/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/as/tests").hasRole("DIRETOR")
                         .anyRequest().authenticated()
                         )
