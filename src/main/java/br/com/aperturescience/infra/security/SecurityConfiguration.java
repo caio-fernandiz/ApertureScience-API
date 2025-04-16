@@ -27,6 +27,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/as/tests").hasRole("DIRETOR")
                         .anyRequest().authenticated()
                         )
+                .addFilterBefore()
                 .build();
     }
     @Bean
