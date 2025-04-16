@@ -1,8 +1,10 @@
 package br.com.aperturescience.infra.security;
 
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -22,6 +24,7 @@ public class SecurityConfiguration {
                         .anyRequest().authenticated()
                         )
                 .build();
-
     }
+
+    public AuthenticationManager authenticationConfiguration
 }
