@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
 
 import br.com.aperturescience.models.Employee;
 
@@ -24,9 +25,12 @@ public class TokenService {
                 String token = JWT.create()
                                     .withIssuer("aperture-api")
                                     .withSubject(employee.getLoginCode())
-                                    .withExpiresAt(1000)
+                                    .withExpiresAt(genExpirationDate())
                                     .sign(algorithm);
-        } catch (Exception e) {
+
+                return token;
+        } catch (JWTCreationException exception) {
+            throw new RuntimeException("Error while generating token", exception);
             
         }
         
