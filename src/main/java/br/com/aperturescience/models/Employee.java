@@ -8,13 +8,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.aperturescience.infra.user.UserRole;
-import br.com.aperturescience.util.GeradorDeLogin;
-import br.com.aperturescience.util.GeradorDepsswrd;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,10 +35,16 @@ public class Employee implements UserDetails{
     private String psswrd;
     private String loginCode;
 
+    public Employee(String logingCode, String psswrd, UserRole role) {
+        this.loginCode = logingCode;
+        this.psswrd = psswrd;
+        this.role = role;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("DIRETOR"), new SimpleGrantedAuthority("CIENTISTA"));
-        else return List.of(new SimpleGrantedAuthority("CIENTISTA"));
+        if(this.role == UserRole.DIRETOR) return List.of(new SimpleGrantedAuthority("ROLE_DIRETOR"), new SimpleGrantedAuthority("CIENTISTA"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_CIENTISTA"));
     }
 
     @Override
