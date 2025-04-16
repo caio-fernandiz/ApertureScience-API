@@ -36,6 +36,14 @@ public class TokenService {
         
     }
 
+    public String validateToken (String token){
+        try {
+            
+        } catch (Exception e) {
+            
+        }
+    }
+
     private Instant genExpirationDate(){
             return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
