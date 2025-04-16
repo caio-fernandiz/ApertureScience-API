@@ -1,5 +1,6 @@
 package br.com.aperturescience.infra.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,6 +18,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfiguration {
     
+    @Autowired
+    SecurityFilter securityFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity
@@ -28,7 +32,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/as/tests").hasRole("DIRETOR")
                         .anyRequest().authenticated()
                         )
-                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter)
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
     @Bean
