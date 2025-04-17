@@ -35,10 +35,16 @@ public class Employee implements UserDetails{
     private String psswrd;
     private String loginCode;
 
-    public Employee(String logingCode, String psswrd, UserRole role) {
+    public Employee(String logingCode, String psswrd, UserRole role, String name, Integer age, String cpf, String email, String telephone, Integer accessLevel) {
         this.loginCode = logingCode;
         this.psswrd = psswrd;
         this.role = role;
+        this.name = name;
+        this.age = age;
+        this.cpf = cpf;
+        this.email = email;
+        this.telephone = telephone;
+        this.accessLevel = accessLevel;
     }
 
     @Override

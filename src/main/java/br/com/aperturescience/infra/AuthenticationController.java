@@ -43,7 +43,7 @@ public class AuthenticationController {
         if(this.repository.findByLoginCode(data.loginCode()) !=null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.psswrd());
-        Employee newEmployee = new Employee(data.loginCode(), encryptedPassword, data.role());
+        Employee newEmployee = new Employee(data.loginCode(), encryptedPassword, data.role(), data.name(), data.age(), data.cpf(), data.email(), data.telephone(), data.accessLevel());
 
         this.repository.save(newEmployee);
         return ResponseEntity.ok().build();
