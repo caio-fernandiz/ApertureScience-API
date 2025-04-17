@@ -4,7 +4,9 @@ public enum UserRole {
 
     DIRETOR("diretor"),
 
-    CIENTISTA("cientista"); 
+    CIENTISTA("cientista"),
+    
+    SEGURANCA("seguranca"); 
 
     private String role;
 
